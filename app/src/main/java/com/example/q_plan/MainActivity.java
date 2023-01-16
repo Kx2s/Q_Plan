@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -14,20 +13,10 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
-import com.google.firebase.database.core.Tag;
-import com.google.firebase.firestore.DocumentChange;
-import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
-import com.google.firestore.v1.Document;
 
-import java.sql.DatabaseMetaData;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -42,11 +31,11 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.title);
 
-        findViewById(R.id.button_Login).setOnClickListener(Login);
-        findViewById(R.id.button_signUp).setOnClickListener(SignUp);
+        findViewById(R.id.Button_cs_login).setOnClickListener(Login);
+        findViewById(R.id.Button_cs_signup).setOnClickListener(SignUp);
 
-        UserId = findViewById(R.id.editText_id);
-        UserPw = findViewById(R.id.editText_Pw);
+        UserId = findViewById(R.id.EditText_cs_logid);
+        UserPw = findViewById(R.id.EditText_cs_logpw);
 
         db.collection("Users").get()
                 .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
@@ -111,7 +100,7 @@ public class MainActivity extends AppCompatActivity {
                     .addOnFailureListener(new OnFailureListener() {
                         @Override
                         public void onFailure(@NonNull Exception e) {
-                            Toast.makeText(MainActivity.this, "다시 입력해주세요.", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(MainActivity.this, "인터넷 연결을 확인해주세요.", Toast.LENGTH_SHORT).show();
                         }
                     });
         }
@@ -125,8 +114,8 @@ public class MainActivity extends AppCompatActivity {
             Intent intent = new Intent(getApplicationContext(), SignUp.class);
 
             EditText UserId, UserPw;
-            UserId = findViewById(R.id.editText_id);
-            UserPw = findViewById(R.id.editText_Pw);
+            UserId = findViewById(R.id.EditText_cs_logid);
+            UserPw = findViewById(R.id.EditText_cs_logpw);
             String getUserId = UserId.getText().toString();
             String getUserPw = UserPw.getText().toString();
 

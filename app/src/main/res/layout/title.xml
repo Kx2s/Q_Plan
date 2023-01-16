@@ -19,7 +19,7 @@
         app:layout_constraintVertical_bias="0.2" />
 
     <Button
-        android:id="@+id/button_Login"
+        android:id="@+id/Button_cs_login"
         android:layout_width="144dp"
         android:layout_height="53dp"
         android:text="로그인"
@@ -30,7 +30,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <Button
-        android:id="@+id/button_signUp"
+        android:id="@+id/Button_cs_signup"
         android:layout_width="144dp"
         android:layout_height="53dp"
         android:text="회원가입"
@@ -42,28 +42,28 @@
         app:layout_constraintVertical_bias="0.7" />
 
     <EditText
-        android:id="@+id/editText_id"
+        android:id="@+id/EditText_cs_logid"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="아이디"
         android:inputType="textPersonName"
         android:minHeight="48dp"
-        app:layout_constraintBottom_toTopOf="@+id/button_Login"
+        app:layout_constraintBottom_toTopOf="@+id/Button_cs_login"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView"
         app:layout_constraintVertical_bias="0.4" />
 
     <EditText
-        android:id="@+id/editText_Pw"
+        android:id="@+id/EditText_cs_logpw"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="비밀번호"
         android:inputType="textPassword"
         android:minHeight="48dp"
-        app:layout_constraintBottom_toTopOf="@+id/button_Login"
+        app:layout_constraintBottom_toTopOf="@+id/Button_cs_login"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView"

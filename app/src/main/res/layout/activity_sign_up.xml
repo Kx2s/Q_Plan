@@ -19,7 +19,7 @@
         android:orientation="horizontal">
 
         <Button
-            android:id="@+id/button2"
+            android:id="@+id/Button_cs_signback"
             android:layout_width="3dp"
             android:layout_height="match_parent"
             android:layout_weight="1.7"
@@ -32,7 +32,7 @@
             android:layout_weight="1" />
 
         <TextView
-            android:id="@+id/signup"
+            android:id="@+id/TextView_cs_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
