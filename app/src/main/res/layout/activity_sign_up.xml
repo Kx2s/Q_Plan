@@ -54,7 +54,7 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/signName"
+                android:id="@+id/TextView_cs_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="5dp"
@@ -63,7 +63,7 @@
                 android:textStyle="bold" />
 
             <EditText
-                android:id="@+id/signNameText"
+                android:id="@+id/EditText_cs_name"
                 android:layout_width="wrap_content"
                 android:layout_height="48dp"
                 android:layout_marginBottom="20dp"
@@ -73,7 +73,7 @@
                 android:text="" />
 
             <TextView
-                android:id="@+id/signBirthtext"
+                android:id="@+id/TextView_cs_birth"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="5dp"
@@ -87,7 +87,7 @@
                 android:orientation="horizontal">
 
                 <EditText
-                    android:id="@+id/signBirth"
+                    android:id="@+id/EditText_cs_birth1"
                     android:layout_width="100dp"
                     android:layout_height="48dp"
                     android:layout_marginRight="10dp"
@@ -98,7 +98,7 @@
                     android:text="" />
 
                 <EditText
-                    android:id="@+id/signBirth2"
+                    android:id="@+id/EditText_cs_birth2"
                     android:layout_width="100dp"
                     android:layout_height="48dp"
                     android:layout_marginRight="10dp"
@@ -109,7 +109,7 @@
                     android:text="" />
 
                 <EditText
-                    android:id="@+id/signBirth3"
+                    android:id="@+id/EditText_cs_birth3"
                     android:layout_width="100dp"
                     android:layout_height="48dp"
                     android:layout_marginBottom="20dp"
@@ -120,7 +120,7 @@
             </LinearLayout>
 
             <TextView
-                android:id="@+id/signIDtext"
+                android:id="@+id/TextView_cs_id"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="5dp"
@@ -134,7 +134,7 @@
                 android:orientation="horizontal">
 
                 <EditText
-                    android:id="@+id/signID"
+                    android:id="@+id/EditText_cs_id"
                     android:layout_width="wrap_content"
                     android:layout_height="48dp"
                     android:layout_marginBottom="20dp"
@@ -144,7 +144,7 @@
                     android:text="" />
 
                 <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/id_checkbutton"
+                    android:id="@+id/Button_cs_idcheck"
                     android:layout_width="wrap_content"
                     android:layout_height="48dp"
                     android:layout_marginLeft="10dp"
@@ -155,7 +155,7 @@
             </LinearLayout>
 
             <TextView
-                android:id="@+id/signPWtext"
+                android:id="@+id/TextView_cs_pw"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="5dp"
@@ -165,7 +165,7 @@
 
 
             <EditText
-                android:id="@+id/signPW"
+                android:id="@+id/EditText_cs_pw"
                 android:layout_width="wrap_content"
                 android:layout_height="48dp"
                 android:layout_marginBottom="20dp"
@@ -175,7 +175,7 @@
                 android:text="" />
 
             <TextView
-                android:id="@+id/signPW2text"
+                android:id="@+id/TextView_cs_pw2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="5dp"
@@ -189,7 +189,7 @@
                 android:orientation="horizontal">
 
                 <EditText
-                    android:id="@+id/signPW2"
+                    android:id="@+id/EditText_cs_pw2"
                     android:layout_width="wrap_content"
                     android:layout_height="48dp"
                     android:layout_marginBottom="20dp"
@@ -201,7 +201,7 @@
             </LinearLayout>
 
             <TextView
-                android:id="@+id/signmailtext"
+                android:id="@+id/TextView_cs_email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="5dp"
@@ -210,7 +210,7 @@
                 android:textStyle="bold" />
 
             <EditText
-                android:id="@+id/signmail"
+                android:id="@+id/EditText_cs_email"
                 android:layout_width="wrap_content"
                 android:layout_height="48dp"
                 android:layout_marginBottom="20dp"
@@ -220,7 +220,7 @@
                 android:text="" />
 
             <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/signupbutton"
+                android:id="@+id/Button_cs_end"
                 android:layout_width="wrap_content"
                 android:layout_height="48dp"
                 android:layout_gravity="center"

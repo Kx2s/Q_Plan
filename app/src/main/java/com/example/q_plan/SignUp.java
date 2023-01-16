@@ -29,13 +29,13 @@ public class SignUp extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
 
-        findViewById(R.id.id_checkbutton).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.Button_cs_idcheck).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
             }
         });
-        findViewById(R.id.signupbutton).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.Button_cs_end).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
@@ -47,14 +47,14 @@ public class SignUp extends AppCompatActivity {
         boolean result = true;
         //이거 줄일방법 없나
         ArrayList<EditText> edit = new ArrayList<>();
-        edit.add(findViewById(R.id.signName));
-        edit.add(findViewById(R.id.signBirth));
-        edit.add(findViewById(R.id.signBirth2));
-        edit.add(findViewById(R.id.signBirth3));
-        edit.add(findViewById(R.id.signID));
-        edit.add(findViewById(R.id.signPW));    //5
-        edit.add(findViewById(R.id.signPW2));
-        edit.add(findViewById(R.id.signmail));
+        edit.add(findViewById(R.id.TextView_cs_name));
+        edit.add(findViewById(R.id.EditText_cs_birth1));
+        edit.add(findViewById(R.id.EditText_cs_birth2));
+        edit.add(findViewById(R.id.EditText_cs_birth3));
+        edit.add(findViewById(R.id.EditText_cs_id));
+        edit.add(findViewById(R.id.EditText_cs_pw));    //5
+        edit.add(findViewById(R.id.EditText_cs_pw2));
+        edit.add(findViewById(R.id.EditText_cs_email));
 
 
 
