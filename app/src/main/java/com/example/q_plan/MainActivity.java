@@ -31,33 +31,11 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.title);
 
-        findViewById(R.id.Button_cs_login).setOnClickListener(Login);
-        findViewById(R.id.Button_cs_signup).setOnClickListener(SignUp);
+        findViewById(R.id.Button_login).setOnClickListener(Login);
+        findViewById(R.id.Button_signup).setOnClickListener(SignUp);
 
-        UserId = findViewById(R.id.EditText_cs_logid);
-        UserPw = findViewById(R.id.EditText_cs_logpw);
-
-        db.collection("Users").get()
-                .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
-            @Override
-            public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
-                for (DocumentSnapshot d : queryDocumentSnapshots.getDocuments()) {
-                    System.out.println(d.getData().get("PW"));
-                }
-            }
-        });
-//        db.collection("Users").document("Users").get()
-//                .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-//                    @Override
-//                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-//                        DocumentSnapshot document = task.getResult();
-//                        Map <String, Object> kv = document.getData();
-//                        System.out.println(document.getData().get("admin"));
-//                        System.out.println(document.getData().get("admin").getClass().getName());
-//                    }
-//                });
-//        System.out.println(db.collection("Users").document("Users").get());
-//        System.out.println(db.collection("Users").document("admin").get());
+        UserId = findViewById(R.id.EditText_loginId);
+        UserPw = findViewById(R.id.EditText_loginPw);
     }
 
     //로그인
@@ -113,19 +91,7 @@ public class MainActivity extends AppCompatActivity {
             //유저의 입력값
             Intent intent = new Intent(getApplicationContext(), SignUp.class);
 
-            EditText UserId, UserPw;
-            UserId = findViewById(R.id.EditText_cs_logid);
-            UserPw = findViewById(R.id.EditText_cs_logpw);
-            String getUserId = UserId.getText().toString();
-            String getUserPw = UserPw.getText().toString();
-
-            //HashMap으로 key:value 세팅
-            HashMap result = new HashMap<>();
-            result.put("id", getUserId);
-            result.put("pw", getUserPw);
-
-            //데베 저장
-            writeNewUser("1", getUserId, getUserPw);
+            startActivity(intent);
         }
     };
 
