@@ -21,6 +21,7 @@ import java.util.regex.Pattern;
 public class SignUp extends AppCompatActivity {
 
     public boolean id_check = false;
+    public Firebase_User user = new Firebase_User();
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
 
     @Override
@@ -71,6 +72,7 @@ public class SignUp extends AppCompatActivity {
 
             if (result.equals("")) {
                 Toast.makeText(SignUp.this, "회원가입 성공!", Toast.LENGTH_SHORT).show();
+                user.sign();
                 finish();
             } else {
                 Toast.makeText(SignUp.this, result + " 을(를) 다시 확인해주세요.", Toast.LENGTH_SHORT).show();
@@ -95,17 +97,20 @@ public class SignUp extends AppCompatActivity {
         //이름
         if (edit.get(0).getText().toString().isEmpty()) //빈칸
             return "이름";
-        System.out.println("이름 완료");
+        user.setUserName(edit.get(0).getText().toString());
+        System.out.println("이름 : " + user.getUserName());
 
         //나이
         if (edit.get(1).getText().toString().isEmpty())   //빈칸
             return "나이";
-        System.out.println("나이 완료");
+        user.setUserAge(edit.get(1).getText().toString());
+        System.out.println("나이 : " + user.getUserAge());
 
         //아이디
         if (!id_check)
             return "아이디";
-        System.out.println("아이디 완료");
+        user.setUserId(edit.get(2).getText().toString());
+        System.out.println("아이디 : " + user.getUserId());
 
 
         //비번
@@ -114,7 +119,8 @@ public class SignUp extends AppCompatActivity {
         else if (!edit.get(3).getText().toString().equals(edit.get(4).getText().toString()))
             return "비밀번호";
 
-        System.out.println("비밀번호 완료");
+        user.setUserPw(edit.get(3).getText().toString());
+        System.out.println("비밀번호 : " + user.getUserPw());
 
         //이메일
         Pattern p = Patterns.EMAIL_ADDRESS;
@@ -138,8 +144,8 @@ public class SignUp extends AppCompatActivity {
             //edit.get(7).setBackgroundTintList(ColorStateList.valueOf(Color.RED));
             return "이메일";
         }
-        System.out.println("이메일 완료");
-
+        user.setUserEmail(edit.get(5).getText().toString());
+        System.out.println("이메일 : " + user.getUserId());
         return "";
     }
 

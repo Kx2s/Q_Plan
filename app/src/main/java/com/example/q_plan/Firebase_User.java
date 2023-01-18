@@ -74,7 +74,7 @@ public class Firebase_User {
         return userEmail;
     }
 
-    public void setuserEmail (String email) {
+    public void setUserEmail (String email) {
         this.userEmail = email;
     }
 
