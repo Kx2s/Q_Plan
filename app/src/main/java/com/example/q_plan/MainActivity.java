@@ -61,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
 
                                 //아이디 값이 있다면
                                 if (document.exists()) {
-                                    if (document.getData().get("PW").equals(getUserPw))
+                                    if (document.getData().get("Pw").equals(getUserPw))
                                     {
                                         Toast.makeText(MainActivity.this,
                                                 "환영합니다. " + document.getData().get("Name") + " 님", Toast.LENGTH_SHORT).show();
