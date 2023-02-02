@@ -23,6 +23,7 @@ import java.util.Map;
 public class MainActivity extends AppCompatActivity {
 
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
+
     boolean rt = false;
     EditText UserId, UserPw;
 
