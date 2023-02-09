@@ -2,9 +2,12 @@ package com.example.q_plan;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -13,6 +16,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
@@ -21,6 +25,16 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
+
+    //종혁
+    private BottomNavigationView bottomNavigationView; // 하단 네비 뷰
+    private FragmentManager fm;
+    private FragmentTransaction ft;
+    private jh_Nm1 nm1;
+    private jh_Nm2 nm2;
+    private jh_Nm3 nm3;
+    private jh_Nm4 nm4;
+    //종혁
 
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
 
@@ -119,34 +133,59 @@ public class MainActivity extends AppCompatActivity {
                 });
     }
 
-    public void toMain(){
-        setContentView(R.layout.activity_main);
+    //종혁
+    public void toMain() {
+        setContentView(R.layout.jh_activity_main);
 
-        //버튼 활성화
-        findViewById(R.id.button_Map).setOnClickListener(Menu);
-        findViewById(R.id.button_Schedule).setOnClickListener(Menu);
-        findViewById(R.id.button_Like).setOnClickListener(Menu);
-        findViewById(R.id.button_Mypage).setOnClickListener(Menu);
-    }
-
-    View.OnClickListener Menu = new View.OnClickListener() {
-        @Override
-        public void onClick(View view) {
-
-            switch (view.getId()) {
-                case R.id.button_Map:
-                    System.out.println("Map " + view.getId());
-                    break;
-                case R.id.button_Schedule:
-                    System.out.println("Schedule " + view.getId());
-                    break;
-                case R.id.button_Like:
-                    System.out.println("Like " + view.getId());
-                    break;
-                case R.id.button_Mypage:
-                    System.out.println("My " + view.getId());
-                    break;
+        bottomNavigationView = findViewById(R.id.bottomNavi);
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+                switch (menuItem.getItemId()){
+                    case R.id.action_nm1:
+                        setFrag(0);
+                        break;
+                    case R.id.action_nm2:
+                        setFrag(1);
+                        break;
+                    case R.id.action_nm3:
+                        setFrag(2);
+                        break;
+                    case R.id.action_nm4:
+                        setFrag(3);
+                        break;
+                }
+                return true;
             }
+        });
+        nm1 = new jh_Nm1();
+        nm2 = new jh_Nm2();
+        nm3 = new jh_Nm3();
+        nm4 = new jh_Nm4();
+        setFrag(0);  // 첫화면 지정
+
+    }
+    // 화면 전환 실행문
+    private void setFrag(int n){
+        fm = getSupportFragmentManager();
+        ft = fm.beginTransaction();
+        switch (n){
+            case 0:
+                ft.replace(R.id.main_frame, nm1);
+                ft.commit();
+                break;
+            case 1:
+                ft.replace(R.id.main_frame, nm2);
+                ft.commit();
+                break;
+            case 2:
+                ft.replace(R.id.main_frame, nm3);
+                ft.commit();
+                break;
+            case 3:
+                ft.replace(R.id.main_frame, nm4);
+                ft.commit();
+                break;
         }
-    };
+    }// 종혁ㅇ
 }

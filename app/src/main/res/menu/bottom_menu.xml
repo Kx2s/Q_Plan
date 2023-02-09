@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/action_nm1"
+        android:enabled="true"
+        android:icon="@drawable/jh_ic_baseline_explore_nm1"
+        android:title="탐색"/>
+
+    <item
+        android:id="@+id/action_nm2"
+        android:enabled="true"
+        android:icon="@drawable/jh_ic_baseline_add_circle_nm2"
+        android:title="새일정"/>
+
+    <item
+        android:id="@+id/action_nm3"
+        android:enabled="true"
+        android:icon="@drawable/jh_ic_baseline_favorite_nm3"
+        android:title="찜"/>
+
+    <item
+        android:id="@+id/action_nm4"
+        android:enabled="true"
+        android:icon="@drawable/jh_ic_baseline_home_nm4"
+        android:title="MY"/>
+
+</menu>
