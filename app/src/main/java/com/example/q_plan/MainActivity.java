@@ -166,8 +166,9 @@ public class MainActivity extends AppCompatActivity {
         nm3 = new jh_Nm3();
         nm4 = new jh_Nm4();
         setFrag(0);  // 첫화면 지정
-
     }
+
+
     // 화면 전환 실행문
     private void setFrag(int n){
         fm = getSupportFragmentManager();
