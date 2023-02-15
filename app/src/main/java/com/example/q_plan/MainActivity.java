@@ -29,15 +29,11 @@ public class MainActivity extends AppCompatActivity {
     private BottomNavigationView bottomNavigationView; // 하단 네비 뷰
     private FragmentManager fm;
     private FragmentTransaction ft;
-    private jh_Nm1 nm1;
-    private jh_Nm2 nm2;
-    private jh_Nm3 nm3;
-    private jh_Nm4 nm4;
     //종혁
 
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
     public Userdata user = new Userdata();
-            //(Userdata) getApplication();
+            //(Userdata) ();
 
     boolean rt = false;
     EditText UserId, UserPw;
@@ -161,10 +157,6 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             }
         });
-        nm1 = new jh_Nm1();
-        nm2 = new jh_Nm2();
-        nm3 = new jh_Nm3();
-        nm4 = new jh_Nm4();
         setFrag(0);  // 첫화면 지정
     }
 
@@ -175,21 +167,21 @@ public class MainActivity extends AppCompatActivity {
         ft = fm.beginTransaction();
         switch (n){
             case 0:
-                ft.replace(R.id.main_frame, nm1);
+                ft.replace(R.id.main_frame, new jh_Nm1());
                 ft.commit();
                 break;
             case 1:
-                ft.replace(R.id.main_frame, nm2);
+                ft.replace(R.id.main_frame, new jh_Nm2());
                 ft.commit();
                 break;
             case 2:
-                ft.replace(R.id.main_frame, nm3);
+                ft.replace(R.id.main_frame, new jh_Nm3());
                 ft.commit();
                 break;
             case 3:
-                ft.replace(R.id.main_frame, nm4);
+                ft.replace(R.id.main_frame, new k_myPage());
                 ft.commit();
                 break;
         }
-    }// 종혁ㅇ
+    }// 종혁ㅇ /K_class 수정
 }
