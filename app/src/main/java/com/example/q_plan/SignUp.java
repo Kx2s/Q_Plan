@@ -10,18 +10,21 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.regex.Pattern;
 
 public class SignUp extends AppCompatActivity {
 
+    HashMap signUser = new HashMap();
     public boolean id_check = false;
-    public Firebase_User user = new Firebase_User();
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
 
     @Override
@@ -65,6 +68,7 @@ public class SignUp extends AppCompatActivity {
         });
     }
 
+    //회원가입 버튼
     View.OnClickListener sign_end = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
@@ -72,7 +76,7 @@ public class SignUp extends AppCompatActivity {
 
             if (result.equals("")) {
                 Toast.makeText(SignUp.this, "회원가입 성공!", Toast.LENGTH_SHORT).show();
-                user.sign();
+                sign();
                 finish();
             } else {
                 Toast.makeText(SignUp.this, result + " 을(를) 다시 확인해주세요.", Toast.LENGTH_SHORT).show();
@@ -80,8 +84,9 @@ public class SignUp extends AppCompatActivity {
         }
     };
 
-
+    //입력 체크
     public String sign_check() {
+        String temp;    //임시 저장
         System.out.println("체크 시작");
         
         //이거 줄일방법 없나
@@ -94,37 +99,46 @@ public class SignUp extends AppCompatActivity {
         edit.add(findViewById(R.id.EditText_cs_email));
         System.out.println("레이아웃 등록");
 
+
         //이름
-        if (edit.get(0).getText().toString().isEmpty()) //빈칸
+        temp = edit.get(0).getText().toString();
+        if (temp.isEmpty()) //빈칸
             return "이름";
-        user.setUserName(edit.get(0).getText().toString());
-        System.out.println("이름 : " + user.getUserName());
+        signUser.put("Name", temp);
+        System.out.println("이름 : " + temp);
+
 
         //나이
-        if (edit.get(1).getText().toString().isEmpty())   //빈칸
+        temp = edit.get(1).getText().toString();
+        if (temp.isEmpty())   //빈칸
             return "나이";
-        user.setUserAge(edit.get(1).getText().toString());
-        System.out.println("나이 : " + user.getUserAge());
+        signUser.put("Age", temp);
+        System.out.println("나이 : " + temp);
+
 
         //아이디
+        temp = edit.get(2).getText().toString();
         if (!id_check)
             return "아이디";
-        user.setUserId(edit.get(2).getText().toString());
-        System.out.println("아이디 : " + user.getUserId());
+        signUser.put("Id", temp);
+        System.out.println("아이디 : " + temp);
 
 
         //비번
-        if (edit.get(3).getText().toString().isEmpty())
+        temp = edit.get(3).getText().toString();
+        if (temp.isEmpty())
             return "비밀번호";
-        else if (!edit.get(3).getText().toString().equals(edit.get(4).getText().toString()))
+        else if (!temp.equals(edit.get(4).getText().toString()))
             return "비밀번호";
 
-        user.setUserPw(edit.get(3).getText().toString());
-        System.out.println("비밀번호 : " + user.getUserPw());
+        signUser.put("Pw", temp);
+        System.out.println("비밀번호 : " + temp);
+
 
         //이메일
+        temp = edit.get(5).getText().toString();
         Pattern p = Patterns.EMAIL_ADDRESS;
-        if (p.matcher(edit.get(5).getText().toString()).matches())    //형식 확인
+        if (p.matcher(temp).matches())    //형식 확인
         {
             db.collection("Users").get()
                     .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
@@ -141,12 +155,29 @@ public class SignUp extends AppCompatActivity {
                         }
                     });
         } else {
-            //edit.get(7).setBackgroundTintList(ColorStateList.valueOf(Color.RED));
             return "이메일";
         }
-        user.setUserEmail(edit.get(5).getText().toString());
-        System.out.println("이메일 : " + user.getUserId());
+        signUser.put("Email", temp);
+        System.out.println("이메일 : " + temp);
         return "";
+    }
+
+
+    //DB에 입력
+    public void sign() {
+        db.collection("Users").document(signUser.get("Id").toString()).set(signUser)
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void unused) {
+                        System.out.println("가입성공");
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        System.out.println("가입실패");
+                    }
+                });
     }
 
 }

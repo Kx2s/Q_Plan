@@ -19,7 +19,6 @@ import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -37,6 +36,8 @@ public class MainActivity extends AppCompatActivity {
     //종혁
 
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
+    public Userdata user = new Userdata();
+            //(Userdata) getApplication();
 
     boolean rt = false;
     EditText UserId, UserPw;
@@ -78,8 +79,10 @@ public class MainActivity extends AppCompatActivity {
                                 if (document.exists()) {
                                     if (document.getData().get("Pw").equals(getUserPw))
                                     {
+                                        System.out.println(document.getData());
+                                        user.setData(document.getData());
                                         Toast.makeText(MainActivity.this,
-                                                "환영합니다. " + document.getData().get("Name") + " 님", Toast.LENGTH_SHORT).show();
+                                                "환영합니다. " + user.getUserName() + " 님", Toast.LENGTH_SHORT).show();
                                         toMain();
                                     } else {
                                         Toast.makeText(MainActivity.this, "비밀번호가 틀렸습니다.", Toast.LENGTH_SHORT).show();

@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Q Plan</string>
+    <string name="userName">Name</string>
 </resources>
