@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
     //종혁
 
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
-    public Userdata user = new Userdata();
+    public Userdata user = Userdata.getInstance();
             //(Userdata) ();
 
     boolean rt = false;
@@ -77,6 +77,8 @@ public class MainActivity extends AppCompatActivity {
                                     {
                                         System.out.println(document.getData());
                                         user.setData(document.getData());
+                                        System.out.println(user.getUserId() + " / " + user.getUserName());
+
                                         Toast.makeText(MainActivity.this,
                                                 "환영합니다. " + user.getUserName() + " 님", Toast.LENGTH_SHORT).show();
                                         toMain();
