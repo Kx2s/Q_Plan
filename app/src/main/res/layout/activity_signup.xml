@@ -19,7 +19,7 @@
         android:orientation="horizontal">
 
         <Button
-            android:id="@+id/Button_signBack"
+            android:id="@+id/Button_cs_back"
             android:layout_width="3dp"
             android:layout_height="match_parent"
             android:layout_weight="1.7"
@@ -54,7 +54,7 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/TextView_signName"
+                android:id="@+id/TextView_cs_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="5dp"
@@ -63,7 +63,7 @@
                 android:textStyle="bold" />
 
             <EditText
-                android:id="@+id/EditText_signName"
+                android:id="@+id/EditText_cs_name"
                 android:layout_width="wrap_content"
                 android:layout_height="48dp"
                 android:layout_marginBottom="20dp"

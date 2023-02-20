@@ -32,41 +32,44 @@ public class SignUp extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
 
-        //아이디 확인
-        findViewById(R.id.Button_cs_idcheck).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                EditText id = findViewById(R.id.EditText_cs_id);
-                db.collection("Users").get()
-                        .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                            @Override
-                            public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                                if (task.isSuccessful()) {
-                                    for (DocumentSnapshot d : task.getResult()) {
-                                        if (d.getId().equals(id.getText().toString())) {
-                                            Toast.makeText(SignUp.this, "이미 사용중인 아이디입니다.", Toast.LENGTH_SHORT).show();
-                                            id_check = false;
-                                            return;
-                                        }
-                                    }
-                                    Toast.makeText(SignUp.this, "사용가능한 아이디입니다.", Toast.LENGTH_SHORT).show();
-                                    id_check = true;
-                                }
-                                else {
-                                    Toast.makeText(SignUp.this, "인터넷 연결을 확인해주세요.", Toast.LENGTH_SHORT).show();
-                                }
-                            }
-                        });
-            }
-        });
+        findViewById(R.id.Button_cs_idcheck).setOnClickListener(checkId);
         findViewById(R.id.Button_cs_end).setOnClickListener(sign_end);
-        findViewById(R.id.Button_signBack).setOnClickListener(new View.OnClickListener() {
+        //Back
+        findViewById(R.id.Button_cs_back).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 finish();
             }
         });
     }
+
+    //아이디 중복 확인
+    View.OnClickListener checkId = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            EditText id = findViewById(R.id.EditText_cs_id);
+            db.collection("Users").get()
+                    .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                        @Override
+                        public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                            if (task.isSuccessful()) {
+                                for (DocumentSnapshot d : task.getResult()) {
+                                    if (d.getId().equals(id.getText().toString())) {
+                                        Toast.makeText(SignUp.this, "이미 사용중인 아이디입니다.", Toast.LENGTH_SHORT).show();
+                                        id_check = false;
+                                        return;
+                                    }
+                                }
+                                Toast.makeText(SignUp.this, "사용가능한 아이디입니다.", Toast.LENGTH_SHORT).show();
+                                id_check = true;
+                            }
+                            else {
+                                Toast.makeText(SignUp.this, "인터넷 연결을 확인해주세요.", Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    });
+        }
+    };
 
     //회원가입 버튼
     View.OnClickListener sign_end = new View.OnClickListener() {
@@ -91,7 +94,7 @@ public class SignUp extends AppCompatActivity {
         
         //이거 줄일방법 없나
         ArrayList<EditText> edit = new ArrayList<>();
-        edit.add(findViewById(R.id.EditText_signName));
+        edit.add(findViewById(R.id.EditText_cs_name));
         edit.add(findViewById(R.id.EditText_cs_age));
         edit.add(findViewById(R.id.EditText_cs_id));
         edit.add(findViewById(R.id.EditText_cs_pw));
