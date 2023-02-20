@@ -1,6 +1,7 @@
 package com.example.q_plan;
 
 import android.app.Application;
+import android.net.Uri;
 
 import com.google.firebase.firestore.auth.User;
 
@@ -13,6 +14,7 @@ public class Userdata extends Application {
     private String userId = "";
     private String userPw = "";
     private String userEmail = "";
+    private Uri userImage;
 
     @Override
     public void onCreate() {
@@ -39,6 +41,10 @@ public class Userdata extends Application {
             instance = new Userdata();
         return instance;
     }
+
+    public void setUserImage(Uri uri) { userImage = uri; }
+
+    public Uri getUserImage() { return userImage; }
 
     public String getUserName() { return userName; }
 

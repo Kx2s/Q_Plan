@@ -6,6 +6,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -19,6 +20,8 @@ import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -31,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
     private FragmentTransaction ft;
     //종혁
 
+    private StorageReference storageRef = FirebaseStorage.getInstance().getReference();
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
     public Userdata user = Userdata.getInstance();
             //(Userdata) ();
@@ -75,9 +79,21 @@ public class MainActivity extends AppCompatActivity {
                                 if (document.exists()) {
                                     if (document.getData().get("Pw").equals(getUserPw))
                                     {
-                                        System.out.println(document.getData());
                                         user.setData(document.getData());
-                                        System.out.println(user.getUserId() + " / " + user.getUserName());
+                                        storageRef.child("Q_Plan/" + user.getUserId() + ".jpg")
+                                                .getDownloadUrl()
+                                                .addOnSuccessListener(new OnSuccessListener<Uri>() {
+                                                    @Override
+                                                    public void onSuccess(Uri uri) {
+                                                        user.setUserImage(uri);
+                                                        System.out.println("Success : " + uri);
+                                                    }
+                                                }).addOnFailureListener(new OnFailureListener() {
+                                                    @Override
+                                                    public void onFailure(@NonNull Exception e) {
+                                                        System.out.println("Failure : " + e);
+                                                    }
+                                                });
 
                                         Toast.makeText(MainActivity.this,
                                                 "환영합니다. " + user.getUserName() + " 님", Toast.LENGTH_SHORT).show();

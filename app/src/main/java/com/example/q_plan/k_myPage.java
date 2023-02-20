@@ -22,6 +22,9 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.request.RequestOptions;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.auth.User;
@@ -40,6 +43,7 @@ public class k_myPage extends Fragment {
     private TextView id;
     private TextView name;
 
+    Uri photoUri;
 
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.k_mypage, container, false);
@@ -54,18 +58,10 @@ public class k_myPage extends Fragment {
         id.setText(user.getUserId());
         name.setText(user.getUserName());
 
-        storageRef.child("Q_Plan/" + user.getUserId() + ".jpg").getDownloadUrl()
-                .addOnSuccessListener(new OnSuccessListener<Uri>() {
-                    @Override
-                    public void onSuccess(Uri uri) {
-                        photo.setImageURI(uri);
-                    }
-                }).addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
+        Glide.with(this)
+                .load(user.getUserImage())
+                .into(photo);
 
-                    }
-                });
         return view;
     }
 
@@ -77,18 +73,17 @@ public class k_myPage extends Fragment {
             Intent intent = new Intent(Intent.ACTION_PICK);
             intent.setType(MediaStore.Images.Media.CONTENT_TYPE);
             startActivityForResult(intent, GALLERY_CODE);
-            System.out.println("00");
         }
     };
 
     @Override
     public void onActivityResult(int requestCode, final int resultCode, @NonNull final Intent data) {
 
-        System.out.println("0");
+        if (data == null)
+            return;
+
         if (requestCode == GALLERY_CODE) {
             Uri imageUri = data.getData();
-            System.out.println(imageUri);
-            photo.setImageURI(imageUri);
 
             StorageReference riversRef = storageRef.child("Q_Plan/" + user.getUserId() + ".jpg");
             UploadTask uploadTask = riversRef.putFile(imageUri);
@@ -111,6 +106,8 @@ public class k_myPage extends Fragment {
             }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                 @Override
                 public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                    photo.setImageURI(imageUri);
+                    user.setUserImage(imageUri);
                     Toast.makeText(getActivity(), "사진이 정상적으로 등록 되었습니다.",
                             Toast.LENGTH_SHORT).show();
                 }
