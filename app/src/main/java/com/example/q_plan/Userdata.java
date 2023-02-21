@@ -9,11 +9,11 @@ import java.util.Map;
 
 public class Userdata extends Application {
 
-    private String userName = "";
-    private String userAge = "";
-    private String userId = "";
-    private String userPw = "";
-    private String userEmail = "";
+    private String userName;
+    private int userAge;
+    private String userId;
+    private String userPw;
+    private String userEmail;
     private Uri userImage;
 
     @Override
@@ -28,7 +28,7 @@ public class Userdata extends Application {
 
     public void setData(Map<String, Object> doc) {
         this.userName = doc.get("Name").toString();
-        this.userAge = doc.get("Age").toString();
+        this.userAge = Integer.parseInt(doc.get("Age").toString());
         this.userId = doc.get("Id").toString();
         this.userPw = doc.get("Pw").toString();
         this.userEmail = doc.get("Email").toString();
@@ -42,13 +42,18 @@ public class Userdata extends Application {
         return instance;
     }
 
+    public void changing (Map<String, Object> doc) {
+        this.userName = doc.get("Name").toString();
+        this.userAge = Integer.parseInt(doc.get("Age").toString());
+    }
+
     public void setUserImage(Uri uri) { userImage = uri; }
 
     public Uri getUserImage() { return userImage; }
 
     public String getUserName() { return userName; }
 
-    public String getUserAge() { return userAge; }
+    public int getUserAge() { return userAge; }
 
     public String getUserId() { return userId; }
 

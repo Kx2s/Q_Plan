@@ -89,7 +89,7 @@
                     android:layout_marginBottom="20dp"
                     android:ems="10"
                     android:hint="나이"
-                    android:inputType="textPersonName"
+                    android:inputType="number"
                     android:text="" />
 
                 <TextView
