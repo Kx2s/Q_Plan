@@ -81,7 +81,7 @@ public class k_changeinformation extends AppCompatActivity {
                             toast("인터넷 연결을 확인해주세요.");
                         }
                     });
-        }//
+        }///
     };
 
     //사용자 정보 세팅
