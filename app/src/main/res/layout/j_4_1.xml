@@ -5,9 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center"
-    android:orientation="vertical"
-    tools:context=".j_4"
-    >
+    android:orientation="vertical">
+<!--    tools:context=".j_4_1"-->
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -82,7 +81,7 @@
                             android:layout_weight="1"
                             android:textOff="20대"
                             android:textOn="20대"
-                            android:Color="@drawable/j_button_click"
+                            android:background="@drawable/j_button_click"
                             android:textSize="20dp" />
 
                         <ToggleButton
@@ -94,7 +93,7 @@
                             android:layout_weight="1"
                             android:textOff="30~40대"
                             android:textOn="30~40대"
-                            android:Color="@drawable/j_button_click"
+                            android:background="@drawable/j_button_click"
                             android:textSize="20dp" />
                     </LinearLayout>
 
@@ -111,7 +110,7 @@
                             android:layout_weight="1"
                             android:textOff="50~60대"
                             android:textOn="50~60대"
-                            android:Color="@drawable/j_button_click"
+                            android:background="@drawable/j_button_click"
                             android:textSize="20dp" />
 
                         <ToggleButton
@@ -123,7 +122,7 @@
                             android:layout_weight="1"
                             android:textOff="70대이상"
                             android:textOn="70대이상"
-                            android:Color="@drawable/j_button_click"
+                            android:background="@drawable/j_button_click"
                             android:textSize="20dp" />
                     </LinearLayout>
 
@@ -135,7 +134,7 @@
                         android:layout_marginRight="5dp"
                         android:textOff="없음(초기화)"
                         android:textOn="없음(초기화)"
-                        android:Color="@drawable/j_button_click"
+                        android:background="@drawable/j_button_click"
                         android:textSize="20dp" />
                 </LinearLayout>
                     <TextView
@@ -165,7 +164,7 @@
                                 android:layout_weight="1"
                                 android:textOff="48개월이하"
                                 android:textOn="48개월이하"
-                                android:Color="@drawable/j_button_click"
+                                android:background="@drawable/j_button_click"
                                 android:textSize="20dp" />
 
                             <ToggleButton
@@ -177,7 +176,7 @@
                                 android:layout_weight="1"
                                 android:textOff="3세~7세"
                                 android:textOn="3세~7세"
-                                android:Color="@drawable/j_button_click"
+                                android:background="@drawable/j_button_click"
                                 android:textSize="20dp" />
                         </LinearLayout>
                         <LinearLayout
@@ -193,7 +192,7 @@
                                 android:layout_weight="1"
                                 android:textOff="초등학생"
                                 android:textOn="초등학생"
-                                android:Color="@drawable/j_button_click"
+                                android:background="@drawable/j_button_click"
                                 android:textSize="20dp" />
 
                             <ToggleButton
@@ -205,7 +204,7 @@
                                 android:layout_weight="1"
                                 android:textOff="청소년"
                                 android:textOn="청소년"
-                                android:Color="@drawable/j_button_click"
+                                android:background="@drawable/j_button_click"
                                 android:textSize="20dp" />
                         </LinearLayout>
                         <ToggleButton
@@ -216,7 +215,7 @@
                             android:layout_marginRight="5dp"
                             android:textOff="없음(초기화)"
                             android:textOn="없음(초기화)"
-                            android:Color="@drawable/j_button_click"
+                            android:background="@drawable/j_button_click"
                             android:textSize="20dp" />
                 </LinearLayout>
                 <LinearLayout
@@ -243,7 +242,7 @@
                         android:layout_marginLeft="10dp"
                         android:layout_marginRight="10dp"
                         android:background="@drawable/j_border"
-                        android:gravity_layout="center"
+                        android:layout_gravity="center"
                         >
 
                         <Button

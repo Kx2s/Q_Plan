@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="right"
-    tools:context=".j_Button">
+    tools:context=".j_4">
 
 
     <Button
