@@ -185,15 +185,15 @@ public class MainActivity extends AppCompatActivity {
         ft = fm.beginTransaction();
         switch (n){
             case 0:
-                ft.replace(R.id.main_frame, new jh_Nm1());
+                ft.replace(R.id.main_frame, new w_Nm1());
                 ft.commit();
                 break;
             case 1:
-                ft.replace(R.id.main_frame, new jh_Nm2());
+                ft.replace(R.id.main_frame, new w_Nm2());
                 ft.commit();
                 break;
             case 2:
-                ft.replace(R.id.main_frame, new jh_Nm3());
+                ft.replace(R.id.main_frame, new w_Nm3());
                 ft.commit();
                 break;
             case 3:
