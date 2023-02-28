@@ -18,7 +18,6 @@ import java.util.List;
 public class w_Nm1 extends Fragment {
 
     private View view;
-
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
