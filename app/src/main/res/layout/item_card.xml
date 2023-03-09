@@ -25,7 +25,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:scaleType="centerCrop"
-                android:src="@drawable/ic_launcher_background"/>
+                android:src="@drawable/ic_launcher_background" />
 
 
             <TextView
@@ -38,6 +38,8 @@
                 android:textColor="#ffffff"
                 android:textSize="20dp"/>
 
+
+
         </RelativeLayout>
         <TextView
             android:id="@+id/contents_text"
@@ -45,7 +47,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:hint="카드뷰예시입니다."
-            android:textColor="#000"
+            android:textColor="#7F7F7F"
             android:textSize="40sp"
             tools:text=""/>
     </LinearLayout>

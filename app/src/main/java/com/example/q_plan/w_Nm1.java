@@ -10,6 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
@@ -33,6 +34,7 @@ public class w_Nm1 extends Fragment {
         }
         w_RecycleAdapter adapter = new w_RecycleAdapter(dataList);
         recyclerView.setAdapter(adapter);
+
 
         return view;
     }

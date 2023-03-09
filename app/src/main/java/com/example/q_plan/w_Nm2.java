@@ -28,8 +28,8 @@ public class w_Nm2 extends Fragment {
         recyclerView.setLayoutManager(layoutManager);
 
         List<w_Itemcard> dataList = new ArrayList<>();
-        for (int i = 0; i < 10; i++) {
-            dataList.add(new w_Itemcard(i + "번째장소", "천안시 000" + i));
+        for (int i = 0; i < 3; i++) {
+            dataList.add(new w_Itemcard(i + "번째\n\n장소", "천안시\n\n 000" + i));
         }
         w_RecycleAdapter adapter = new w_RecycleAdapter(dataList);
         recyclerView.setAdapter(adapter);
