@@ -40,7 +40,8 @@
                     android:layout_height="match_parent"
                     android:orientation="vertical"
                     android:padding="10dp">
-                    //시간표
+
+                    <!--시간표-->
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="320dp">
@@ -1569,7 +1570,8 @@
                         </TableLayout>
 
                     </LinearLayout>
-                    //카드뷰
+
+                    <!--카드뷰-->
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"

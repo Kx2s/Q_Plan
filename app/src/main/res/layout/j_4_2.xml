@@ -33,7 +33,7 @@
             android:layout_marginRight="10dp"
             android:layout_marginTop="5dp"
             android:layout_marginBottom="10dp"
-            android:background="@drawable/j_border"
+            android:drawable="@drawable/j_border"
             android:orientation="vertical">
 
             <TextView
@@ -64,7 +64,7 @@
                         android:layout_weight="1"
                         android:textOff="자연 관광지"
                         android:textOn="자연 관광지"
-                        android:background="@drawable/j_button_click"
+                        android:drawable="@drawable/j_button_click"
                         android:textSize="20dp"/>
 
                     <ToggleButton
