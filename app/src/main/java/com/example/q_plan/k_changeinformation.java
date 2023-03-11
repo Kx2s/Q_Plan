@@ -34,7 +34,6 @@ public class k_changeinformation extends AppCompatActivity {
         setContentView(R.layout.k_changeinformation);
         setting();
 
-
         findViewById(R.id.Button_changeEnd).setOnClickListener(end);
         //Back
         findViewById(R.id.Button_changeBack).setOnClickListener(new View.OnClickListener() {
