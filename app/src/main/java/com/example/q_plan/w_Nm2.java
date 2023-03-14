@@ -25,7 +25,9 @@ public class w_Nm2 extends Fragment{
         ViewGroup view = (ViewGroup) inflater.inflate(R.layout.jh_nm2, container, false);
         //장소 추천 버튼 선언
         Button btn1=view.findViewById(R.id.Newbt);
-//        btn1.setOnClickListener(this);
+
+        //장소 버튼 클릭시 event
+        //Fragment에서는 Onclick 사용 불가능. 별도의 리스너 사용.
         btn1.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
@@ -34,6 +36,7 @@ public class w_Nm2 extends Fragment{
                 startActivity(intent);
             }
         });
+        // 창현
 
         RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.item_recyclerview2);
         RecyclerView.LayoutManager layoutManager = new GridLayoutManager(getActivity(), 1);
@@ -48,12 +51,4 @@ public class w_Nm2 extends Fragment{
 
         return view;
     }
-
-    //장소 버튼 클릭시 event
-    //Fragment에서는 Onclick 사용 불가능. 별도의 리스너 사용.
-//    public void onClick(View v){
-//        Intent intent= new Intent(getActivity(), j_4_1.class);
-//        startActivity(intent);
-//    }
-    // 창현
 }
