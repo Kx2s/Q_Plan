@@ -7,7 +7,6 @@
     android:gravity="center"
     android:orientation="vertical"
     tools:context=".j_4_1">
-<!--    tools:context=".j_4_1"-->
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -46,170 +45,93 @@
                 android:text="누구와 여행하나요?"
                 android:textSize="25dp" />
 
-            <LinearLayout
+            <ScrollView
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/textView5"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
-                    android:text="성인"
-                    android:textSize="23dp" />
-
+                android:layout_height="match_parent">
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
                     android:layout_marginRight="10dp"
+                    android:layout_marginTop="10dp"
                     android:orientation="vertical">
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent">
-
-                        <ToggleButton
-                            android:id="@+id/button2"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_marginLeft="5dp"
-                            android:layout_marginRight="5dp"
-                            android:layout_weight="1"
-                            android:textOff="20대"
-                            android:textOn="20대"
-                            android:drawable="@drawable/j_button_click"
-                            android:textSize="20dp" />
-
-                        <ToggleButton
-                            android:id="@+id/button3"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_marginLeft="5dp"
-                            android:layout_marginRight="5dp"
-                            android:layout_weight="1"
-                            android:textOff="30~40대"
-                            android:textOn="30~40대"
-                            android:drawable="@drawable/j_button_click"
-                            android:textSize="20dp" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-
-                        <ToggleButton
-                            android:id="@+id/button4"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_marginLeft="5dp"
-                            android:layout_marginRight="5dp"
-                            android:layout_weight="1"
-                            android:textOff="50~60대"
-                            android:textOn="50~60대"
-                            android:drawable="@drawable/j_button_click"
-                            android:textSize="20dp" />
-
-                        <ToggleButton
-                            android:id="@+id/button5"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_marginLeft="5dp"
-                            android:layout_marginRight="5dp"
-                            android:layout_weight="1"
-                            android:textOff="70대이상"
-                            android:textOn="70대이상"
-                            android:drawable="@drawable/j_button_click"
-                            android:textSize="20dp" />
-                    </LinearLayout>
-
-                    <ToggleButton
-                        android:id="@+id/button6"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginLeft="5dp"
-                        android:layout_marginRight="5dp"
-                        android:textOff="없음(초기화)"
-                        android:textOn="없음(초기화)"
-                        android:drawable="@drawable/j_button_click"
-                        android:textSize="20dp" />
-                </LinearLayout>
                     <TextView
-                        android:id="@+id/textView6"
+                        android:id="@+id/textView5"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="20dp"
                         android:layout_marginLeft="10dp"
                         android:layout_marginRight="10dp"
-                        android:text="아동 및 청소년"
+                        android:text="성인"
                         android:textSize="23dp" />
+
                     <LinearLayout
-                        android:layout_width="350dp"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
                         android:orientation="vertical">
+
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="match_parent">
 
                             <ToggleButton
-                                android:id="@+id/button7"
+                                android:id="@+id/button2"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:layout_marginLeft="5dp"
                                 android:layout_marginRight="5dp"
                                 android:layout_weight="1"
-                                android:textOff="48개월이하"
-                                android:textOn="48개월이하"
+                                android:textOff="20대"
+                                android:textOn="20대"
                                 android:drawable="@drawable/j_button_click"
                                 android:textSize="20dp" />
 
                             <ToggleButton
-                                android:id="@+id/button8"
+                                android:id="@+id/button3"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:layout_marginLeft="5dp"
                                 android:layout_marginRight="5dp"
                                 android:layout_weight="1"
-                                android:textOff="3세~7세"
-                                android:textOn="3세~7세"
+                                android:textOff="30~40대"
+                                android:textOn="30~40대"
                                 android:drawable="@drawable/j_button_click"
                                 android:textSize="20dp" />
                         </LinearLayout>
+
                         <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent">
+                            android:layout_height="wrap_content">
 
                             <ToggleButton
-                                android:id="@+id/button9"
+                                android:id="@+id/button4"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:layout_marginLeft="5dp"
                                 android:layout_marginRight="5dp"
                                 android:layout_weight="1"
-                                android:textOff="초등학생"
-                                android:textOn="초등학생"
+                                android:textOff="50~60대"
+                                android:textOn="50~60대"
                                 android:drawable="@drawable/j_button_click"
                                 android:textSize="20dp" />
 
                             <ToggleButton
-                                android:id="@+id/button10"
+                                android:id="@+id/button5"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:layout_marginLeft="5dp"
                                 android:layout_marginRight="5dp"
                                 android:layout_weight="1"
-                                android:textOff="청소년"
-                                android:textOn="청소년"
+                                android:textOff="70대이상"
+                                android:textOn="70대이상"
                                 android:drawable="@drawable/j_button_click"
                                 android:textSize="20dp" />
                         </LinearLayout>
+
                         <ToggleButton
-                            android:id="@+id/button12"
+                            android:id="@+id/button6"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:layout_marginLeft="5dp"
@@ -218,72 +140,155 @@
                             android:textOn="없음(초기화)"
                             android:drawable="@drawable/j_button_click"
                             android:textSize="20dp" />
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
-                    android:layout_marginTop="30dp"
-                    android:gravity="center"
-                    android:orientation="vertical">
+                    </LinearLayout>
+                        <TextView
+                            android:id="@+id/textView6"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:text="아동 및 청소년"
+                            android:textSize="23dp" />
+                        <LinearLayout
+                            android:layout_width="350dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:orientation="vertical">
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent">
 
-                    <TextView
-                        android:id="@+id/textView7"
-                        android:layout_width="360dp"
+                                <ToggleButton
+                                    android:id="@+id/button7"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginLeft="5dp"
+                                    android:layout_marginRight="5dp"
+                                    android:layout_weight="1"
+                                    android:textOff="48개월이하"
+                                    android:textOn="48개월이하"
+                                    android:drawable="@drawable/j_button_click"
+                                    android:textSize="20dp" />
+
+                                <ToggleButton
+                                    android:id="@+id/button8"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginLeft="5dp"
+                                    android:layout_marginRight="5dp"
+                                    android:layout_weight="1"
+                                    android:textOff="3세~7세"
+                                    android:textOn="3세~7세"
+                                    android:drawable="@drawable/j_button_click"
+                                    android:textSize="20dp" />
+                            </LinearLayout>
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent">
+
+                                <ToggleButton
+                                    android:id="@+id/button9"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginLeft="5dp"
+                                    android:layout_marginRight="5dp"
+                                    android:layout_weight="1"
+                                    android:textOff="초등학생"
+                                    android:textOn="초등학생"
+                                    android:drawable="@drawable/j_button_click"
+                                    android:textSize="20dp" />
+
+                                <ToggleButton
+                                    android:id="@+id/button10"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginLeft="5dp"
+                                    android:layout_marginRight="5dp"
+                                    android:layout_weight="1"
+                                    android:textOff="청소년"
+                                    android:textOn="청소년"
+                                    android:drawable="@drawable/j_button_click"
+                                    android:textSize="20dp" />
+                            </LinearLayout>
+                            <ToggleButton
+                                android:id="@+id/button12"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_marginLeft="5dp"
+                                android:layout_marginRight="5dp"
+                                android:textOff="없음(초기화)"
+                                android:textOn="없음(초기화)"
+                                android:drawable="@drawable/j_button_click"
+                                android:textSize="20dp" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
                         android:layout_marginRight="10dp"
-                        android:text="총 인원 수"
-                        android:textSize="25dp" />
+                        android:gravity="center"
+                        android:orientation="vertical">
 
+                        <TextView
+                            android:id="@+id/textView7"
+                            android:layout_width="360dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_marginTop="10dp"
+                            android:text="총 인원 수"
+                            android:textSize="25dp" />
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:background="@drawable/j_border"
+                            android:layout_gravity="center"
+                            >
+
+                            <Button
+                                android:id="@+id/up"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="-"
+                                android:textSize="25dp"
+                                android:textStyle="bold"
+                                android:gravity="center"
+                                />
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="0"
+                                android:textSize="25dp"
+                                android:gravity="center"
+                                android:layout_marginLeft="20dp"
+                                android:layout_marginRight="20dp"/>
+                            <Button
+                                android:id="@+id/down"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="+"
+                                android:textSize="25dp"
+                                android:gravity="center"/>
+                        </LinearLayout>
+                    </LinearLayout>
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginRight="10dp"
-                        android:background="@drawable/j_border"
                         android:layout_gravity="center"
-                        >
-
+                        android:layout_marginTop="10dp">
                         <Button
-                            android:id="@+id/up"
+                            android:id="@+id/next_open"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="-"
-                            android:textSize="25dp"
-                            android:textStyle="bold"
-                            android:gravity="center"
-                            />
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="0"
-                            android:textSize="25dp"
-                            android:gravity="center"
-                            android:layout_marginLeft="20dp"
-                            android:layout_marginRight="20dp"/>
-                        <Button
-                            android:id="@+id/down"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="+"
-                            android:textSize="25dp"
-                            android:gravity="center"/>
+                            android:layout_marginLeft="5dp"
+                            android:text="다음"/>
                     </LinearLayout>
                 </LinearLayout>
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="35dp">
-                    <Button
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="5dp"
-                        android:text="다음"/>
-                </LinearLayout>
-            </LinearLayout>
+            </ScrollView>
         </LinearLayout>
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

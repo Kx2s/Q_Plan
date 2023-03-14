@@ -39,6 +39,7 @@
         </activity>
         <activity android:name=".k_changeinformation"/>
         <activity android:name=".j_4_1"/>
+        <activity android:name=".j_4_2"/>
     </application>
 
 </manifest>
