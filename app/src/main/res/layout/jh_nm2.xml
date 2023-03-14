@@ -5,7 +5,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:context=".w_Nm2">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -14,16 +15,28 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_height="wrap_content">
 
+            <!--검색 장소 입력 레이아웃-->
             <EditText
-                android:layout_width="300dp"
+                android:layout_width="325dp"
                 android:layout_height="match_parent"
                 android:layout_marginBottom="5dp"
                 android:hint=" 장소 입력"
                 android:text=""
-                android:textSize="20dp" />
+                android:textSize="20dp"
+                android:layout_marginLeft="10dp"/>
+
+            <!--장소 추천 버튼, 클릭시 j_4_1레이아웃 open-->
+            <Button
+                android:id="@+id/Newbt"
+                android:layout_width="49dp"
+                android:layout_height="wrap_content"
+                android:text="+"
+                android:textSize="20sp"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="15dp"
+                />
         </LinearLayout>
 
 

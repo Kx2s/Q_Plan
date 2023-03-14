@@ -16,6 +16,7 @@
         tools:layout_editor_absoluteY="0dp"
         android:gravity="center">
 
+
         <TextView
             android:id="@+id/textView2"
             android:layout_width="wrap_content"
@@ -63,7 +64,7 @@
                         android:layout_marginRight="5dp"
                         android:layout_weight="1"
                         android:textOff="자연 관광지"
-                        android:textOn="자연 관광ㅈ"
+                        android:textOn="자연 관광지"
                         android:drawable="@drawable/j_button_click"
                         android:textSize="20dp"/>
 

@@ -38,6 +38,7 @@
                 android:value="" />
         </activity>
         <activity android:name=".k_changeinformation"/>
+        <activity android:name=".j_4_1"/>
     </application>
 
 </manifest>
