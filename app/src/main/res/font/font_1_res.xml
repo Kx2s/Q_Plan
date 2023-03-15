@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <!--font = 사용할 글꼴의 리소스 위치-->
     <!-- = 글꼴의 스타일-->
-    <!-- = 글꼴의 굵기-->
+    <!-- = 글꼴의  굵기-->
     <font
         android:font="@font/font_1"
         android:fontStyle="normal"
