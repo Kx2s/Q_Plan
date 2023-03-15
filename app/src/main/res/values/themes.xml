@@ -12,5 +12,57 @@
         <!-- Status bar color. -->
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
+
+
+        <!--font 적용-->
+        <item name="android:textViewStyle">@style/customTextViewFontStyle</item>
+        <item name="android:buttonStyle">@style/customButtonFontStyle</item>
+        <item name="android:editTextStyle">@style/customEditTextFontStyle</item>
+<!--        <item name="android:radioButtonStyle">@style/customRadioButtonFontStyle</item>-->
+<!--        <item name="android:checkboxStyle">@style/customCheckboxFontStyle</item>-->
+<!--        <item name="android:fontFamily">@font/font_1_res</item>-->
+
+
     </style>
+
+
+    <!-- Custom font 적용 -->
+    <style name="customTextViewFontStyle" parent="@android:style/Widget.DeviceDefault.TextView">
+        <item name="android:fontFamily">@font/font_1_res</item>
+    </style>
+
+    <style name="customButtonFontStyle" parent="@android:style/Widget.DeviceDefault.Button">
+        <item name="android:fontFamily">@font/font_1_res</item>
+    </style>
+
+    <style name="customEditTextFontStyle" parent="@android:style/Widget.DeviceDefault.EditText">
+        <item name="android:fontFamily">@font/font_1_res</item>
+    </style>
+
+
+<!--    <style name="customRadioButtonFontStyle" parent="@android:style/Widget.DeviceDefault.CompoundButton.RadioButton">-->
+<!--        <item name="android:fontFamily">@font/font_1_res</item>-->
+<!--    </style>-->
+
+<!--    <style name="customCheckboxFontStyle" parent="@android:style/Widget.DeviceDefault.CompoundButton.CheckBox">-->
+<!--        <item name="android:fontFamily">@font/font_1_res</item>-->
+<!--    </style>-->
+
+<!--    font가 적용되지 않을경우아래 코드로 작성-->
+<!--    <item name="android:fontFamily">@font/font_1_res</item>-->
+
+    <!--Toast-->
+    <style name="Toast">
+        <item name="stTextBold">true</item>
+        <item name="stTextColor">@color/black</item> <!--텍스트 색상-->
+        <item name="stFont">@font/font_1_res</item> <!--폰트 색상-->
+        <item name="stTextSize">50sp</item> <!--텍스트 사이즈-->
+        <item name="stColorBackground">@color/white</item> <!--텍스트 배경색-->
+        <item name="stStrokeWidth">3dp</item> <!--텍두리 두께-->
+        <item name="stStrokeColor">@color/black</item> <!--테두리 색상-->
+        <item name="stLength">LONG</item> LONG or SHORT <!-- 지속시간 -->
+        <item name="stGravity">top</item> top or center <!-- 위치 -->
+        <item name="stRadius">20dp</item> <!--가장자리 둥굴림-->
+    </style>
+
 </resources>
