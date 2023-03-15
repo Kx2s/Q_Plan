@@ -21,11 +21,14 @@ public class j_4_2 extends AppCompatActivity implements OnClickListener{
         Button formerbtn=(Button) findViewById(R.id.former_open);
         //'다음'버튼 선언
         Button nextbtn2=(Button) findViewById(R.id.next_open2);
-
+        //'건너뛰기'버튼 선언
+        Button jumpbtn=(Button) findViewById(R.id.jump);
         //'이전' 버튼 함수
         formerbtn.setOnClickListener(this);
         //'다음' 버튼 함수
         nextbtn2.setOnClickListener(this);
+        //'건너뛰기'버튼 함수
+        jumpbtn.setOnClickListener(this);
     }
 
     @Override
@@ -39,6 +42,9 @@ public class j_4_2 extends AppCompatActivity implements OnClickListener{
             //'다음'버튼 클릭시 보류
             case R.id.next_open2:
                 break;
+            //'건너뛰기'버튼 클릭시 테마선택 종료
+            case R.id.jump:
+                finish();
         }
     }
     // 창현
