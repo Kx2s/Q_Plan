@@ -30,7 +30,6 @@ public class w_Nm3 extends Fragment {
 
         RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.item_recyclerview3);
 
-
         RecyclerView.LayoutManager layoutManager = new GridLayoutManager(getActivity(), 1);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
         recyclerView.addItemDecoration(new DividerItemDecoration(getActivity(), DividerItemDecoration.VERTICAL));

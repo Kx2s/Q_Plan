@@ -21,12 +21,12 @@
             android:layout_width="match_parent"
             android:layout_height="150dp">
 
+
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:scaleType="centerCrop"
                 android:src="@drawable/ic_launcher_background" />
-
 
             <TextView
                 android:id="@+id/title_text"
@@ -38,6 +38,13 @@
                 android:textColor="#ffffff"
                 android:textSize="20dp"/>
 
+            <Button
+                android:id="@+id/cartbt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:text="저장"
+                android:textSize="20dp" />
 
 
         </RelativeLayout>
