@@ -12,7 +12,7 @@ import java.net.URL;
 
 public class j_Rest extends AsyncTask<String, Void, String> {
 
-    String clientKey = "#########################";;
+    String clientKey = "#########################";
     private String str, receiveMsg;
     private final String ID = "########";
 
