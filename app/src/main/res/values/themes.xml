@@ -14,7 +14,7 @@
         <!-- Customize your theme here. -->
 
 
-        <!--font 적용-->
+        <!--font  적용-->
         <item name="android:textViewStyle">@style/customTextViewFontStyle</item>
         <item name="android:buttonStyle">@style/customButtonFontStyle</item>
         <item name="android:editTextStyle">@style/customEditTextFontStyle</item>
