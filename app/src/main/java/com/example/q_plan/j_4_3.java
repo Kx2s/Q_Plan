@@ -38,7 +38,7 @@ public class j_4_3 extends AppCompatActivity implements View.OnClickListener {
         //'다음' 버튼 함수
         endbtn.setOnClickListener(this);
 
-        //===== 더미 데이터 생성 ===================
+        //===== 데이터 생성 ===================
         List<w_Itemcard> dataList = new ArrayList<>();
         for (int i = 0; i < 10; i++) {
             dataList.add(new w_Itemcard(i + "번째장소", "천안시 000" + i));
