@@ -41,10 +41,14 @@ public class j_4_2 extends AppCompatActivity implements OnClickListener{
                 break;
             //'다음'버튼 클릭시 보류
             case R.id.next_open2:
+                Intent intent2= new Intent(this, j_4_3.class);
+                startActivity(intent2);
                 break;
             //'건너뛰기'버튼 클릭시 테마선택 종료
             case R.id.jump:
-                finish();
+                Intent intent3= new Intent(this, j_4_3.class);
+                startActivity(intent3);
+                break;
         }
     }
     // 창현
