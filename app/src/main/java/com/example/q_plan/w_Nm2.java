@@ -22,9 +22,11 @@ public class w_Nm2 extends Fragment{
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        ViewGroup view = (ViewGroup) inflater.inflate(R.layout.jh_nm2, container, false);
+        ViewGroup view = (ViewGroup) inflater.inflate(R.layout.j_2, container, false);
         //장소 추천 버튼 선언
         Button btn1=view.findViewById(R.id.Newbt);
+        //시간표 생성 버튼 선언
+        Button btn2=view.findViewById(R.id.make_time);
 
         //장소 버튼 클릭시 event
         //Fragment에서는 Onclick 사용 불가능. 별도의 리스너 사용.
@@ -32,6 +34,15 @@ public class w_Nm2 extends Fragment{
             @Override
             public void onClick(View v){
                 Intent intent= new Intent(getActivity(), j_4_1.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                startActivity(intent);
+            }
+        });
+        //시간표 생성 버튼 클릭시 event
+        btn2.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                Intent intent= new Intent(getActivity(), j_2_1.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                 startActivity(intent);
             }

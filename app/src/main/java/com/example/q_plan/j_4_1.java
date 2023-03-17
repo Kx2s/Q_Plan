@@ -78,7 +78,7 @@ public class j_4_1 extends AppCompatActivity implements OnClickListener{
                     break;
                 //'건너뛰기'버튼 클릭시 테마선택 종료
                 case R.id.jump:
-                    Intent intent2= new Intent(this, j_4_3.class);
+                    Intent intent2= new Intent(this, j_4_4.class);
                     startActivity(intent2);
                     break;
                 // 성인 버튼 클릭시 성인 숫자 1증가

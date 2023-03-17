@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="period">
+        <item id='p1'>무박</item>
+        <item id='p2'>1박2일</item>
+        <item id='p3'>2박3일</item>
+        <item id='p4'>3박4일</item>
+        <item id='p5'>4박5일</item>
+    </string-array>
+</resources>
