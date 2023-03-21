@@ -15,7 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 import java.util.List;
 
-public class w_Nm1 extends Fragment {
+public class w_Nm1 extends Fragment  {
 
     private View view;
     @Nullable
