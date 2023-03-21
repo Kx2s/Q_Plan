@@ -45,6 +45,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.title);
 
         findViewById(R.id.Button_login).setOnClickListener(Login);
@@ -52,6 +53,7 @@ public class MainActivity extends AppCompatActivity {
 
         UserId = findViewById(R.id.EditText_loginId);
         UserPw = findViewById(R.id.EditText_loginPw);
+
     }
 
     //로그인
@@ -152,7 +154,7 @@ public class MainActivity extends AppCompatActivity {
 
     //종혁
     public void toMain() {
-        setContentView(R.layout.jh_activity_main);
+        setContentView(R.layout.w_activity_main);
 
         bottomNavigationView = findViewById(R.id.bottomNavi);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {

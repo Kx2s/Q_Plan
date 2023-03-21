@@ -36,3 +36,4 @@ public class w_Itemcard {
                 '}';
     }
 }
+// 데이터를 입력받아서 변수에 담고 세팅한다.

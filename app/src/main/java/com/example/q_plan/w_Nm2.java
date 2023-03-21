@@ -6,7 +6,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageButton;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -22,7 +21,7 @@ public class w_Nm2 extends Fragment{
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        ViewGroup view = (ViewGroup) inflater.inflate(R.layout.jh_nm2, container, false);
+        ViewGroup view = (ViewGroup) inflater.inflate(R.layout.w_nm2, container, false);
         //장소 추천 버튼 선언
         Button btn1=view.findViewById(R.id.Newbt);
 

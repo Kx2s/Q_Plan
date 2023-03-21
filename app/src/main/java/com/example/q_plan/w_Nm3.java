@@ -9,8 +9,6 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.DividerItemDecoration;
-import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -21,29 +19,29 @@ import java.util.List;
 public class w_Nm3 extends Fragment {
 
     private View view;
-    private w_RecycleAdapter adapter;
+    private w_RecycleAdapter2 adapter;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        view = inflater.inflate(R.layout.jh_nm3, container, false);
+        view = inflater.inflate(R.layout.w_nm3, container, false);
 
         RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.item_recyclerview3);
 
-        RecyclerView.LayoutManager layoutManager = new GridLayoutManager(getActivity(), 1);
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL,false);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
-        recyclerView.addItemDecoration(new DividerItemDecoration(getActivity(), DividerItemDecoration.VERTICAL));
 
         List<w_Itemcard> dataList = new ArrayList<>();
         for (int i = 0; i < 10; i++) {
             dataList.add(new w_Itemcard(i + "번째장소", "천안시 000" + i));
         }
 
-        adapter = new w_RecycleAdapter(dataList);
+        adapter = new w_RecycleAdapter2(dataList);
         recyclerView.setAdapter(adapter);
 
 
         // 드레그 기능 활상화 및 방향설정
+        // TochHelper를 이요하여 item의 이동방향을 정할수 있다.
         ItemTouchHelper itemTouchHelper = new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(ItemTouchHelper.UP | ItemTouchHelper.DOWN, ItemTouchHelper.START | ItemTouchHelper.END) {
             @Override
             public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {

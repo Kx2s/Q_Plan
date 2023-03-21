@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -8,23 +7,25 @@
     android:layout_height="match_parent"
     android:padding="10dp"
     android:orientation="vertical">
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
+
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginBottom="20dp"
-                android:hint=" 장소 입력"
-                android:text=""
-                android:textSize="20dp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="찜"
+                android:textSize="40dp"
+                android:layout_gravity="center">
+            </TextView>
+
         </LinearLayout>
 
         <ScrollView
@@ -36,10 +37,10 @@
                 android:layout_height="match_parent">
 
                 <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/item_recyclerview"
+                    android:id="@+id/item_recyclerview3"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    tools:listitem="@layout/item_card">
+                    tools:listitem="@layout/w_itemcard">
 
                 </androidx.recyclerview.widget.RecyclerView>
             </LinearLayout>
