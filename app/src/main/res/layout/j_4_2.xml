@@ -18,7 +18,6 @@
 
 
         <TextView
-            android:id="@+id/textView2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
@@ -43,7 +42,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:layout_marginBottom="5dp"
-                android:text="어떤 여행을 하고싶나요?"
+                android:text="여행의 목적을 말해주세요!"
                 android:textSize="25dp" />
 
             <LinearLayout

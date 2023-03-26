@@ -42,7 +42,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:layout_marginBottom="15dp"
-                android:text="누구와 여행하나요?"
+                android:text="누구와 함께 하는 여행이나요?"
                 android:textSize="25dp" />
 
             <ScrollView
