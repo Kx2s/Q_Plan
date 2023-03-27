@@ -29,6 +29,8 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
 import java.io.InputStream;
+import java.util.HashMap;
+import java.util.Map;
 
 public class k_myPage extends Fragment {
     private final int GALLERY_CODE = 10;
@@ -80,6 +82,14 @@ public class k_myPage extends Fragment {
         @Override
         public void onClick(View v) {
             //자주 묻는 질문 어케함?
+            Map tmp = new HashMap();
+            tmp.put("category", "0");
+            tmp.put("areaCode", "34");
+            tmp.put("contentTypeId", "39");
+
+            k_getApi qwe = new k_getApi(getContext());
+            qwe.set(tmp);
+            qwe.execute();
         }
     };
 
