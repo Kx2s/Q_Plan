@@ -1,12 +1,24 @@
 package com.example.q_plan;
 
+import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.ScrollView;
+import android.widget.TableLayout;
+import android.widget.TableRow;
+import android.widget.TextView;
 
+import androidx.activity.result.ActivityResult;
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -37,6 +49,7 @@ public class w_Nm2 extends Fragment{
                 startActivity(intent);
             }
         });
+
         //시간표 생성 버튼 클릭시 event
         btn2.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -61,4 +74,20 @@ public class w_Nm2 extends Fragment{
 
         return view;
     }
+//    테이블 동적 생성 코드
+//    public void table_create(int day){
+//        TableLayout table = new TableLayout(getActivity());
+//        TableRow row[] = new TableRow[18];
+//        TextView text[][] = new TextView[18][day]; // 데이터
+//        for(int tr=0; tr<18;tr++) {
+//            row[tr] = new TableRow(getActivity());
+//            for (int td = 0; td < day; td++) {
+//                text[tr][td]=new TextView(getActivity());
+//                text[tr][td].setBackgroundColor(Color.WHITE);
+//
+//                row[tr].addView(text[tr][td]);
+//            }
+//            table.addView(row[tr]);
+//        }
+//    }
 }

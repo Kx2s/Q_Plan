@@ -55,7 +55,10 @@
                     android:padding="10dp">
 
                     <!--시간표-->
-                    <LinearLayout
+
+                    <!--카드뷰-->
+                    <ScrollView
+                        android:id="@+id/time_container"
                         android:layout_width="match_parent"
                         android:layout_height="320dp"
                         android:gravity="center">
@@ -63,13 +66,11 @@
                             android:id="@+id/make_time"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:gravity="center"
                             android:text="시간표 생성하기"
-                            android:textSize="20dp"/>
+                            android:layout_gravity="center"
+                            android:textSize="20dp" />
+                    </ScrollView>
 
-                    </LinearLayout>
-
-                    <!--카드뷰-->
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"

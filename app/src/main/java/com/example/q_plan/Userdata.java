@@ -26,6 +26,7 @@ public class Userdata extends Application {
         super.onTerminate();
     }
 
+
     public void setData(Map<String, Object> doc) {
         this.userName = doc.get("Name").toString();
         this.userAge = Integer.parseInt(doc.get("Age").toString());
