@@ -1,16 +1,22 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
     <style name="Theme.Q_Plan" parent="Theme.AppCompat.Light">
+        <item name="windowNoTitle">true</item>
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/purple_500</item>
-        <item name="colorPrimaryVariant">@color/purple_700</item>
+        <item name="colorPrimary">@color/aqua</item>
+        <item name="colorPrimaryVariant">@color/white</item>
+        <!-- <item name="android:windowFullscreen">true</item> -->
         <item name="colorOnPrimary">@color/white</item>
+        <!--<item name="android:background">@drawable/pexels</item>  -->
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/teal_200</item>
         <item name="colorSecondaryVariant">@color/teal_700</item>
         <item name="colorOnSecondary">@color/black</item>
         <!-- Status bar color. -->
-        <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
+        <item name="android:windowTranslucentStatus">true</item>
+        <item name="android:statusBarColor" tools:target="l">?attr/colorPrimaryVariant</item>
+        <!-- <item name="android:windowLightStatusBar" tools:target="30">true</item> -->
+        <!-- this is the color of the Toolbar -->
         <!-- Customize your theme here. -->
 
 
