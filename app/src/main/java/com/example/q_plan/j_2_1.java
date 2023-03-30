@@ -31,22 +31,6 @@ public class j_2_1 extends AppCompatActivity {
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,R.array.period, androidx.appcompat.R.layout.support_simple_spinner_dropdown_item);
         Spinner period_spinner= findViewById(R.id.spinner);
         period_spinner.setAdapter(adapter);
-//        period_spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-//            @Override
-//            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-//                P_text=period_spinner.getSelectedItem().toString();
-//            }
-//
-//            @Override
-//            public void onNothingSelected(AdapterView<?> parent) {
-//
-//            }
-//        });
-//        P_text=period_spinner.getSelectedItem().toString();
-//        // P_var 변수를 w_Nm2로 전달
-//        Intent P_var=new Intent(this,w_Nm2.class);
-//        //P_var변수에 Spinner값 저장.
-//        P_var.putExtra("기간",P_text);
 
         make_time2.setOnClickListener(new View.OnClickListener() {
             @Override

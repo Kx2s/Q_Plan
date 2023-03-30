@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TableLayout;
 import android.widget.TableRow;
@@ -29,7 +30,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class w_Nm2 extends Fragment{
-
+    int day=0;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -50,15 +51,52 @@ public class w_Nm2 extends Fragment{
             }
         });
 
+        ActivityResultLauncher<Intent> launcher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(),
+                new ActivityResultCallback<ActivityResult> ()
+                {
+                    @Override
+                    public void onActivityResult(ActivityResult data)
+                    {
+//                        Log.d("TAG", "data : " + data);
+                        if (data.getResultCode() == Activity.RESULT_OK)
+                        {
+                            Intent intent = data.getData();
+                            String result = intent.getStringExtra ("result");
+                            Log.v("result", "result : " + result);
+                            if (result.equals("무박")){
+                                btn2.setVisibility(View.GONE);
+                                day=1;
+                                create_table(day);
+                            }
+                            else if(result.equals("1박2일")){
+                                btn2.setVisibility(View.GONE);
+                                day=2;
+                            }
+                            else if(result.equals("2박3일")){
+                                btn2.setVisibility(View.GONE);
+                                day=3;
+                            }
+                            else if(result.equals("3박4일")){
+                                btn2.setVisibility(View.GONE);
+                                day=4;
+                            }
+                            else if(result.equals("4박5일")){
+                                btn2.setVisibility(View.GONE);
+                                day=5;
+                            }
+                        }
+                    }
+                });
+
         //시간표 생성 버튼 클릭시 event
         btn2.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                Intent intent= new Intent(getActivity(), j_2_1.class);
-                intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-                startActivity(intent);
+                Intent intent= new Intent(getActivity().getBaseContext(), j_2_1.class);
+                launcher.launch(intent);
             }
         });
+
         // 창현
 
         RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.item_recyclerview2);
@@ -74,20 +112,19 @@ public class w_Nm2 extends Fragment{
 
         return view;
     }
-//    테이블 동적 생성 코드
-//    public void table_create(int day){
-//        TableLayout table = new TableLayout(getActivity());
-//        TableRow row[] = new TableRow[18];
-//        TextView text[][] = new TextView[18][day]; // 데이터
-//        for(int tr=0; tr<18;tr++) {
-//            row[tr] = new TableRow(getActivity());
-//            for (int td = 0; td < day; td++) {
-//                text[tr][td]=new TextView(getActivity());
-//                text[tr][td].setBackgroundColor(Color.WHITE);
-//
-//                row[tr].addView(text[tr][td]);
-//            }
-//            table.addView(row[tr]);
-//        }
-//    }
+    public void create_table(int day){
+        LinearLayout container=(LinearLayout)getView().findViewById(R.id.time_container);
+        if(day==1){
+
+        }
+//        TableLayout.LayoutParams layoutParams=new TableLayout.LayoutParams(TableLayout.LayoutParams.MATCH_PARENT, TableLayout.LayoutParams.WRAP_CONTENT,1f);
+//        TableLayout time_table=new TableLayout(getActivity());
+//        TableRow row[]=new TableRow[1];
+//        TextView text[][]=new TextView[1][1];
+//        row[0]=new TableRow(getActivity());
+//        text[0][0]=new TextView(getActivity());
+//        text[0][0].setBackgroundColor(Color.BLACK);
+//        row[0].addView(text[0][0]);
+//        time_table.addView(row[0]);
+    }
 }
