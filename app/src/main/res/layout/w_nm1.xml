@@ -15,13 +15,27 @@
         android:orientation="vertical">
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_height="50dp"
+            android:orientation="horizontal">
+
+
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:background="@drawable/w_glassicon"
+                android:layout_marginTop="10dp"/>
+
+            <Spinner
+                android:id="@+id/spinner2"
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_vertical"
+                android:contentDescription="분 류" />
 
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginBottom="20dp"
                 android:hint=" 장소 입력"
                 android:text=""
                 android:textSize="20dp" />
@@ -29,7 +43,8 @@
 
         <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:layout_marginTop="20dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -39,7 +54,7 @@
                     android:id="@+id/item_recyclerview"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    tools:listitem="@layout/w_itemcard">
+                    tools:listitem="@layout/w_itemcard2">
 
                 </androidx.recyclerview.widget.RecyclerView>
             </LinearLayout>

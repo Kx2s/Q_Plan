@@ -50,7 +50,7 @@ public class w_introscreen_splash extends AppCompatActivity {
                         waited += 100;
                     }
                     Intent intent = new Intent(w_introscreen_splash.this,
-                            SignUp.class);
+                            MainActivity.class);
                     intent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                     startActivity(intent);
                     w_introscreen_splash.this.finish();
