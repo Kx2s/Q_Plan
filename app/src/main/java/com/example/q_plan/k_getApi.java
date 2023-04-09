@@ -6,12 +6,16 @@ import android.os.AsyncTask;
 import android.util.Log;
 
 import org.json.JSONArray;
+import org.json.JSONObject;
 
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.Reader;
 import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
@@ -21,20 +25,23 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
+import io.grpc.internal.JsonParser;
+
 public class k_getApi extends AsyncTask<String, Void, String> {
 
     private Context context;
     String clientKey = "#########################";
     private String str, receiveMsg;
     private final String ID = "########";
-    private Map<?, ?> sequence = new HashMap();
+    private Map<String, String> sequence = new HashMap();
 
     k_getApi(Context context) {
         this.context = context;
     }
 
-    public void set (Map<?, ?> sequence) {
+    public void set (Map<String, String> sequence) {
         this.sequence = sequence;
+        this.sequence.put("numOfRows", "30");
         System.out.println("set");
     }
 
@@ -65,19 +72,32 @@ public class k_getApi extends AsyncTask<String, Void, String> {
         return sb.toString();
     }
 
-    public void saveJson(String str, int ctype){
-        JSONArray json = null;
-        AssetManager manager = context.getAssets();
-        String filename = "data.json";
+    public void saveJson(String str){
 
+
+
+
+
+        AssetManager manager = context.getAssets();
+        String filename = sequence.get("category") + ".json";
+        System.out.println(filename);
         try {
-            json = new JSONArray(str);
-            FileOutputStream fos = context.openFileOutput(filename, Context.MODE_APPEND);
+            JSONObject json = new JSONObject(str);
+
+            FileOutputStream fos = context.openFileOutput(filename, Context.MODE_PRIVATE);
             DataOutputStream dos = new DataOutputStream(fos);
             dos.writeUTF(json.toString());
             dos.flush();
             dos.close();
-            System.out.println("저장");
+
+            FileReader r = new FileReader("files/" + filename);
+            Object ob = JsonParser.parse(String.valueOf(r));
+
+            json = (JSONObject) ob;
+            System.out.println(ob);
+            r.close();
+
+
         } catch(Exception e) {
             Log.i("결과", e + "Error");}
     }
@@ -86,10 +106,12 @@ public class k_getApi extends AsyncTask<String, Void, String> {
     @Override
     protected String doInBackground(String... params) {
         System.out.println(params);
-        String api = "https://ojbineyaldsjpfu2yfyqraqplu0ctpbl.lambda-url.ap-northeast-2.on.aws/";
+        String api = "https://ojbineyaldsjpfu2yfyqraqplu0ctpbl.lambda-url.ap-northeast-2.on.aws";
         try {
+            String result = "";
             for (Object i : Arrays.asList(12, 14, 15, 25, 28, 32, 38, 39)) {
-                URL url = new URL(api + "?" + querySet() + "&contenttypeid=" + i.toString()); // 서버 URL
+                URL url = new URL(api + "?" + querySet() + "&contentTypeId=" + i.toString()); // 서버 URL
+                System.out.println(url);
                 HttpURLConnection conn = (HttpURLConnection) url.openConnection();
                 conn.setRequestProperty("Content-Type", "application/x-www-form-urlencoded;charset=UTF-8");
                 conn.setRequestProperty("x-waple-authorization", clientKey);
@@ -101,11 +123,15 @@ public class k_getApi extends AsyncTask<String, Void, String> {
                     while ((str = reader.readLine()) != null) {
                         buffer.append(str);
                     }
+                    //buffer.append(",");
+                    result += buffer;
                     reader.close();
                 } else {
                     Log.i("결과", conn.getResponseCode() + "Error");
                 }
             }
+            saveJson(result);
+
         } catch (MalformedURLException e) {
             e.printStackTrace();
         } catch (IOException e) {

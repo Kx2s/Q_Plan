@@ -85,7 +85,6 @@ public class k_myPage extends Fragment {
             Map tmp = new HashMap();
             tmp.put("category", "0");
             tmp.put("areaCode", "34");
-            tmp.put("contentTypeId", "39");
 
             k_getApi qwe = new k_getApi(getContext());
             qwe.set(tmp);
