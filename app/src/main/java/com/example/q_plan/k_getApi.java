@@ -5,27 +5,24 @@ import android.content.res.AssetManager;
 import android.os.AsyncTask;
 import android.util.Log;
 
-import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
-import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.Reader;
 import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLEncoder;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
-
-import io.grpc.internal.JsonParser;
 
 public class k_getApi extends AsyncTask<String, Void, String> {
 
@@ -41,7 +38,6 @@ public class k_getApi extends AsyncTask<String, Void, String> {
 
     public void set (Map<String, String> sequence) {
         this.sequence = sequence;
-        this.sequence.put("numOfRows", "30");
         System.out.println("set");
     }
 
@@ -72,29 +68,30 @@ public class k_getApi extends AsyncTask<String, Void, String> {
         return sb.toString();
     }
 
-    public void saveJson(String str){
-
-
-
-
+    public void saveJson(List<String> list){
+        String str = "";
+        for (String s : list) {
+            str += s + "\r\n";
+        }
 
         AssetManager manager = context.getAssets();
         String filename = sequence.get("category") + ".json";
-        System.out.println(filename);
         try {
-            JSONObject json = new JSONObject(str);
-
             FileOutputStream fos = context.openFileOutput(filename, Context.MODE_PRIVATE);
             DataOutputStream dos = new DataOutputStream(fos);
-            dos.writeUTF(json.toString());
+            dos.writeUTF(str);
             dos.flush();
             dos.close();
+            System.out.println(filename + " 생성 완료");
 
-            FileReader r = new FileReader("files/" + filename);
-            Object ob = JsonParser.parse(String.valueOf(r));
 
-            json = (JSONObject) ob;
-            System.out.println(ob);
+            BufferedReader r = new BufferedReader(new FileReader("/data/data/com.example.q_plan/files/0.json"));
+            str = "";
+            String tmp = "";
+            while ((tmp = r.readLine()) != null) {
+                str += tmp + "\n";
+            }
+            System.out.println(str);
             r.close();
 
 
@@ -108,7 +105,8 @@ public class k_getApi extends AsyncTask<String, Void, String> {
         System.out.println(params);
         String api = "https://ojbineyaldsjpfu2yfyqraqplu0ctpbl.lambda-url.ap-northeast-2.on.aws";
         try {
-            String result = "";
+
+            ArrayList<String> result = new ArrayList<String>();
             for (Object i : Arrays.asList(12, 14, 15, 25, 28, 32, 38, 39)) {
                 URL url = new URL(api + "?" + querySet() + "&contentTypeId=" + i.toString()); // 서버 URL
                 System.out.println(url);
@@ -123,8 +121,7 @@ public class k_getApi extends AsyncTask<String, Void, String> {
                     while ((str = reader.readLine()) != null) {
                         buffer.append(str);
                     }
-                    //buffer.append(",");
-                    result += buffer;
+                    result.add(buffer.toString());
                     reader.close();
                 } else {
                     Log.i("결과", conn.getResponseCode() + "Error");
