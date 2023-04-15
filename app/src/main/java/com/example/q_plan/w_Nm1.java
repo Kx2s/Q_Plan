@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -37,6 +39,12 @@ public class w_Nm1 extends Fragment  {
         //Recyclerview에서의 item 들을 출력할 형식(스타일)에 맞게 출력하기 위해 어뎁터를 사용
         w_RecycleAdapter adapter = new w_RecycleAdapter(dataList);
         recyclerView.setAdapter(adapter);
+
+        //spinner 선언
+        ArrayAdapter<CharSequence> adapter2 = ArrayAdapter.createFromResource(getActivity(),R.array.place, androidx.appcompat.R.layout.support_simple_spinner_dropdown_item);
+        Spinner place_spinner= view.findViewById(R.id.spinner2);
+        place_spinner.setAdapter(adapter2);
+        String text=place_spinner.getSelectedItem().toString();
 
         return view;
     }
