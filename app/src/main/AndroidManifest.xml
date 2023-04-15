@@ -57,9 +57,10 @@
         종혁 -->
 
         <activity android:name=".k_changeinformation"/>
-        <activity android:name=".j_4_1"/>
-        <activity android:name=".j_4_2"/>
-        <activity android:name=".j_4_3"/>
+        <activity android:name=".j_4_1"
+            android:noHistory="true"/>
+        <activity android:name=".j_4_2"
+            android:noHistory="true"/>
         <activity android:name=".j_4_4"/>
         <activity android:name=".j_2_1"/>
     </application>

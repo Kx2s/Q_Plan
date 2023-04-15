@@ -2,6 +2,7 @@ package com.example.q_plan;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -10,6 +11,8 @@ import android.widget.TextView;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentActivity;
+
+import java.util.Arrays;
 
 
 public class j_4_1 extends AppCompatActivity implements OnClickListener{
@@ -67,7 +70,6 @@ public class j_4_1 extends AppCompatActivity implements OnClickListener{
         resetbtn2.setOnClickListener(this);
 
     }
-
         @Override
         public void onClick(View v){
             switch (v.getId()){

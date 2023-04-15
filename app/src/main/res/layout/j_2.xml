@@ -55,25 +55,27 @@
                     android:padding="10dp">
 
                     <!--시간표-->
-
-                    <!--카드뷰-->
-                    <ScrollView
+                    <LinearLayout
+                        android:id="@+id/time_container"
                         android:layout_width="match_parent"
-                        android:layout_height="320dp"
-                        android:gravity="center">
-                        <LinearLayout
-                            android:id="@+id/time_container"
+                        android:layout_height="match_parent">
+
+                        <ScrollView
+                            android:id="@+id/recyclerView"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
+                            android:layout_height="320dp"
+                            android:gravity="center"
+                            android:scrollbars="vertical">
+
                             <Button
                                 android:id="@+id/make_time"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
-                                android:text="시간표 생성하기"
+                                android:text="일정표 생성하기"
                                 android:textSize="20dp" />
-                        </LinearLayout>
-                    </ScrollView>
+                        </ScrollView>
+                    </LinearLayout>
 
                     <!--카드뷰-->
                     <LinearLayout

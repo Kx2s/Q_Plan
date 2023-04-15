@@ -2,6 +2,7 @@ package com.example.q_plan;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -41,7 +42,7 @@ public class j_4_2 extends AppCompatActivity implements OnClickListener{
                 break;
             //'다음'버튼 클릭시 보류
             case R.id.next_open2:
-                Intent intent2= new Intent(this, j_4_3.class);
+                Intent intent2= new Intent(this, j_4_4.class);
                 startActivity(intent2);
                 break;
             //'건너뛰기'버튼 클릭시 테마선택 종료

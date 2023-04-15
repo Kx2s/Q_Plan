@@ -46,7 +46,7 @@ public class w_Nm2 extends Fragment{
             @Override
             public void onClick(View v){
                 Intent intent= new Intent(getActivity(), j_4_1.class);
-                intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent);
             }
         });
@@ -66,7 +66,6 @@ public class w_Nm2 extends Fragment{
                             if (result.equals("무박")){
                                 btn2.setVisibility(View.GONE);
                                 day=1;
-                                create_table(day);
                             }
                             else if(result.equals("1박2일")){
                                 btn2.setVisibility(View.GONE);
@@ -96,7 +95,6 @@ public class w_Nm2 extends Fragment{
                 launcher.launch(intent);
             }
         });
-
         // 창현
 
         RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.item_recyclerview2);
@@ -111,20 +109,5 @@ public class w_Nm2 extends Fragment{
         recyclerView.setAdapter(adapter);
 
         return view;
-    }
-    public void create_table(int day){
-        LinearLayout container=(LinearLayout)getView().findViewById(R.id.time_container);
-        if(day==1){
-
-        }
-//        TableLayout.LayoutParams layoutParams=new TableLayout.LayoutParams(TableLayout.LayoutParams.MATCH_PARENT, TableLayout.LayoutParams.WRAP_CONTENT,1f);
-//        TableLayout time_table=new TableLayout(getActivity());
-//        TableRow row[]=new TableRow[1];
-//        TextView text[][]=new TextView[1][1];
-//        row[0]=new TableRow(getActivity());
-//        text[0][0]=new TextView(getActivity());
-//        text[0][0].setBackgroundColor(Color.BLACK);
-//        row[0].addView(text[0][0]);
-//        time_table.addView(row[0]);
     }
 }
