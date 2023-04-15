@@ -110,6 +110,10 @@ public class k_myPage extends Fragment {
     View.OnClickListener changeInformation = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
+            k_readFile f = k_readFile.getInstance();
+            System.out.println("ㅡㅡㅡㅡ");
+            System.out.println(f.show(0));
+            System.out.println("ㅡㅡㅡㅡ");
             Intent intent = new Intent(getActivity().getApplicationContext(), k_changeinformation.class);
             startActivity(intent);
         }
