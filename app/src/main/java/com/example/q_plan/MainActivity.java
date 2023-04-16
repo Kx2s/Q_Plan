@@ -38,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
     private StorageReference storageRef = FirebaseStorage.getInstance().getReference();
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
     public Userdata user = Userdata.getInstance();
+    public static Context mContext;
             //(Userdata) ();
 
     boolean rt = false;
@@ -47,6 +48,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.title);
+
+        mContext = this;
 
         findViewById(R.id.Button_login).setOnClickListener(Login);
         findViewById(R.id.Button_signup).setOnClickListener(SignUp);

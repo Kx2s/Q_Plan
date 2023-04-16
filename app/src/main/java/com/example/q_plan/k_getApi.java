@@ -131,10 +131,14 @@ public class k_getApi extends AsyncTask<String, Void, String> {
             e.printStackTrace();
         }
 
-        if (start)
-            m.toMain();
-
         System.out.println("doInBackground 종료");
         return receiveMsg;
+    }
+
+    @Override
+    protected void onPostExecute(String s) {
+        super.onPostExecute(s);
+
+        ((MainActivity)MainActivity.mContext).toMain();
     }
 }
