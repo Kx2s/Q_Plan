@@ -3,8 +3,6 @@ package com.example.q_plan;
 import android.app.Application;
 import android.net.Uri;
 
-import com.google.firebase.firestore.auth.User;
-
 import java.util.Map;
 
 public class Userdata extends Application {

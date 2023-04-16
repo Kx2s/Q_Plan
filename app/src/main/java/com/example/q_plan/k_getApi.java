@@ -1,11 +1,8 @@
 package com.example.q_plan;
 
 import android.content.Context;
-import android.content.res.AssetManager;
 import android.os.AsyncTask;
 import android.util.Log;
-
-import org.json.JSONObject;
 
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
@@ -24,14 +21,15 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+
 public class k_getApi extends AsyncTask<String, Void, String> {
 
+    private boolean start = true;
     private Context context;
     String clientKey = "#########################";
     private String str, receiveMsg;
     private final String ID = "########";
     private Map<String, String> sequence = new HashMap();
-
     k_getApi(Context context) {
         this.context = context;
     }
@@ -73,8 +71,6 @@ public class k_getApi extends AsyncTask<String, Void, String> {
         for (String s : list) {
             str += s + "\r\n";
         }
-
-        AssetManager manager = context.getAssets();
         String filename = sequence.get("category") + ".json";
         try {
             FileOutputStream fos = context.openFileOutput(filename, Context.MODE_PRIVATE);
@@ -134,6 +130,9 @@ public class k_getApi extends AsyncTask<String, Void, String> {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+        if (start)
+            m.toMain();
 
         System.out.println("doInBackground 종료");
         return receiveMsg;

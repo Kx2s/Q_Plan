@@ -6,12 +6,10 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Intent;
-import android.graphics.PixelFormat;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.Window;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -98,9 +96,14 @@ public class MainActivity extends AppCompatActivity {
                                                     }
                                                 });
 
-                                        Toast.makeText(MainActivity.this,
-                                                "환영합니다. " + user.getUserName() + " 님", Toast.LENGTH_SHORT).show();
-                                        toMain();
+                                        Map tmp = new HashMap();
+                                        tmp.put("category", "0");
+                                        tmp.put("areaCode", "34");
+
+                                        k_getApi qwe = new k_getApi(getApplicationContext());
+                                        qwe.set(tmp);
+                                        qwe.execute();
+
                                     } else {
                                         Toast.makeText(MainActivity.this, "비밀번호가 틀렸습니다.", Toast.LENGTH_SHORT).show();
                                     }
@@ -130,31 +133,11 @@ public class MainActivity extends AppCompatActivity {
         }
     };
 
-    //Firebase 데이터 추가
-    private void writeNewUser (String name, String id, String pw) {
-
-        Map<String, Object> user = new HashMap<>();
-        user.put("Name", name);
-        user.put("ID", id);
-        user.put("PW", pw);
-
-        db.collection("Users").document(id).set(user)
-                .addOnSuccessListener(new OnSuccessListener<Void>() {
-                    @Override
-                    public void onSuccess(Void unused) {
-                        Toast.makeText(MainActivity.this, "가입을 환영합니다!", Toast.LENGTH_SHORT).show();
-                    }
-                })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(MainActivity.this, "다시 확인해주세요.", Toast.LENGTH_SHORT).show();
-                    }
-                });
-    }
-
     //종혁
     public void toMain() {
+        Toast.makeText(MainActivity.this,
+                "환영합니다. " + user.getUserName() + " 님", Toast.LENGTH_SHORT).show();
+
         setContentView(R.layout.w_activity_main);
 
         bottomNavigationView = findViewById(R.id.bottomNavi);

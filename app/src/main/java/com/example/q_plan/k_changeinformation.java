@@ -1,7 +1,6 @@
 package com.example.q_plan;
 
 import android.os.Bundle;
-import android.util.Patterns;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.EditText;
@@ -10,18 +9,13 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.regex.Pattern;
 
 public class k_changeinformation extends AppCompatActivity {
     private FirebaseFirestore db = FirebaseFirestore.getInstance();

@@ -82,13 +82,6 @@ public class k_myPage extends Fragment {
         @Override
         public void onClick(View v) {
             //자주 묻는 질문 어케함?
-            Map tmp = new HashMap();
-            tmp.put("category", "0");
-            tmp.put("areaCode", "34");
-
-            k_getApi qwe = new k_getApi(getContext());
-            qwe.set(tmp);
-            qwe.execute();
         }
     };
 
@@ -111,9 +104,7 @@ public class k_myPage extends Fragment {
         @Override
         public void onClick(View v) {
             k_readFile f = k_readFile.getInstance();
-            System.out.println("ㅡㅡㅡㅡ");
             System.out.println(f.show(0));
-            System.out.println("ㅡㅡㅡㅡ");
             Intent intent = new Intent(getActivity().getApplicationContext(), k_changeinformation.class);
             startActivity(intent);
         }
