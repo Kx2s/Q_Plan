@@ -55,10 +55,11 @@
                     android:padding="10dp">
 
                     <!--시간표-->
-                    <LinearLayout
+                    <FrameLayout
                         android:id="@+id/time_container"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent">
+                        android:layout_height="match_parent"
+                        android:background="@drawable/w_cell_shape">
 
                         <ScrollView
                             android:id="@+id/recyclerView"
@@ -75,7 +76,7 @@
                                 android:text="일정표 생성하기"
                                 android:textSize="20dp" />
                         </ScrollView>
-                    </LinearLayout>
+                    </FrameLayout>
 
                     <!--카드뷰-->
                     <LinearLayout

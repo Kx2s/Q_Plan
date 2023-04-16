@@ -1,20 +1,16 @@
 package com.example.q_plan;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageButton;
-import android.widget.LinearLayout;
-import android.widget.ScrollView;
-import android.widget.TableLayout;
-import android.widget.TableRow;
-import android.widget.TextView;
+import android.widget.FrameLayout;
+
 
 import androidx.activity.result.ActivityResult;
 import androidx.activity.result.ActivityResultCallback;
@@ -30,11 +26,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class w_Nm2 extends Fragment{
+    FrameLayout contentFrame;
+    LayoutInflater inflater_table;
+    View view;
     int day=0;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        ViewGroup view = (ViewGroup) inflater.inflate(R.layout.j_2, container, false);
+        view = inflater.inflate(R.layout.j_2, container, false);
         //장소 추천 버튼 선언
         Button btn1=view.findViewById(R.id.Newbt);
         //시간표 생성 버튼 선언
@@ -66,22 +65,17 @@ public class w_Nm2 extends Fragment{
                             if (result.equals("무박")){
                                 btn2.setVisibility(View.GONE);
                                 day=1;
+                                create_table(day);
                             }
                             else if(result.equals("1박2일")){
                                 btn2.setVisibility(View.GONE);
                                 day=2;
+                                create_table(day);
                             }
                             else if(result.equals("2박3일")){
                                 btn2.setVisibility(View.GONE);
                                 day=3;
-                            }
-                            else if(result.equals("3박4일")){
-                                btn2.setVisibility(View.GONE);
-                                day=4;
-                            }
-                            else if(result.equals("4박5일")){
-                                btn2.setVisibility(View.GONE);
-                                day=5;
+                                create_table(day);
                             }
                         }
                     }
@@ -109,5 +103,18 @@ public class w_Nm2 extends Fragment{
         recyclerView.setAdapter(adapter);
 
         return view;
+    }
+    private void create_table(int day){
+        contentFrame=view.findViewById(R.id.time_container);
+        inflater_table= (LayoutInflater) view.getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        if(day==1){
+            inflater_table.inflate(R.layout.j_table_1,contentFrame,true);
+        }
+        else if(day==2){
+            inflater_table.inflate(R.layout.j_table_2,contentFrame,true);
+        }
+        else if(day==3){
+            inflater_table.inflate(R.layout.j_table_3,contentFrame,true);
+        }
     }
 }

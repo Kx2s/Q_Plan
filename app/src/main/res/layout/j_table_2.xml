@@ -24,11 +24,19 @@
                     android:text="" />
 
                 <TextView
-                    android:id="@+id/plan_1_1"
+                    android:id="@+id/plan_1_1_1"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_gravity="center"
-                    android:layout_weight="3"
+                    android:layout_weight="2"
+                    android:textColor="#ffffff"
+                    android:textStyle="bold" />
+                <TextView
+                    android:id="@+id/plan_1_1_2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:layout_weight="2"
                     android:textColor="#ffffff"
                     android:textStyle="bold" />
             </TableRow>
@@ -47,11 +55,21 @@
                     android:textColor="#ffffff" />
 
                 <TextView
-                    android:id="@+id/plan_1_2"
+                    android:id="@+id/plan_1_2_1"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_gravity="center"
-                    android:layout_weight="3"
+                    android:layout_weight="2"
+                    android:background="@drawable/w_cell_shape"
+                    android:text=""
+                    android:textColor="#ffffff"
+                    android:textStyle="bold" />
+                <TextView
+                    android:id="@+id/plan_1_2_2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:layout_weight="2"
                     android:background="@drawable/w_cell_shape"
                     android:text=""
                     android:textColor="#ffffff"
@@ -71,11 +89,21 @@
                     android:textColor="#ffffff" />
 
                 <TextView
-                    android:id="@+id/plan_1_3"
+                    android:id="@+id/plan_1_3_1"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_gravity="center"
-                    android:layout_weight="3"
+                    android:layout_weight="2"
+                    android:background="@drawable/w_cell_shape"
+                    android:text=""
+                    android:textColor="#ffffff"
+                    android:textStyle="bold" />
+                <TextView
+                    android:id="@+id/plan_1_3_2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:layout_weight="2"
                     android:background="@drawable/w_cell_shape"
                     android:text=""
                     android:textColor="#ffffff"
@@ -95,11 +123,21 @@
                     android:textColor="#ffffff" />
 
                 <TextView
-                    android:id="@+id/plan_1_4"
+                    android:id="@+id/plan_1_4_1"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_gravity="center"
-                    android:layout_weight="3"
+                    android:layout_weight="2"
+                    android:background="@drawable/w_cell_shape"
+                    android:text=""
+                    android:textColor="#ffffff"
+                    android:textStyle="bold" />
+                <TextView
+                    android:id="@+id/plan_1_4_2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:layout_weight="2"
                     android:background="@drawable/w_cell_shape"
                     android:text=""
                     android:textColor="#ffffff"
@@ -119,11 +157,21 @@
                     android:textColor="#ffffff" />
 
                 <TextView
-                    android:id="@+id/plan_1_5"
+                    android:id="@+id/plan_1_5_1"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_gravity="center"
-                    android:layout_weight="3"
+                    android:layout_weight="2"
+                    android:background="@drawable/w_cell_shape"
+                    android:text=""
+                    android:textColor="#ffffff"
+                    android:textStyle="bold" />
+                <TextView
+                    android:id="@+id/plan_1_5_2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:layout_weight="2"
                     android:background="@drawable/w_cell_shape"
                     android:text=""
                     android:textColor="#ffffff"
@@ -143,11 +191,21 @@
                     android:textColor="#ffffff" />
 
                 <TextView
-                    android:id="@+id/plan_1_6"
+                    android:id="@+id/plan_1_6_1"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_gravity="center"
-                    android:layout_weight="3"
+                    android:layout_weight="2"
+                    android:background="@drawable/w_cell_shape"
+                    android:text=""
+                    android:textColor="#ffffff"
+                    android:textStyle="bold" />
+                <TextView
+                    android:id="@+id/plan_1_6_2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:layout_weight="2"
                     android:background="@drawable/w_cell_shape"
                     android:text=""
                     android:textColor="#ffffff"
@@ -167,11 +225,21 @@
                     android:textColor="#ffffff" />
 
                 <TextView
-                    android:id="@+id/plan_1_7"
+                    android:id="@+id/plan_1_7_1"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_gravity="center"
-                    android:layout_weight="3"
+                    android:layout_weight="2"
+                    android:background="@drawable/w_cell_shape"
+                    android:text=""
+                    android:textColor="#ffffff"
+                    android:textStyle="bold" />
+                <TextView
+                    android:id="@+id/plan_1_7_2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:layout_weight="2"
                     android:background="@drawable/w_cell_shape"
                     android:text=""
                     android:textColor="#ffffff"
@@ -191,11 +259,21 @@
                     android:textColor="#ffffff" />
 
                 <TextView
-                    android:id="@+id/plan_1_8"
+                    android:id="@+id/plan_1_8_1"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_gravity="center"
-                    android:layout_weight="3"
+                    android:layout_weight="2"
+                    android:background="@drawable/w_cell_shape"
+                    android:text=""
+                    android:textColor="#ffffff"
+                    android:textStyle="bold" />
+                <TextView
+                    android:id="@+id/plan_1_8_2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:layout_weight="2"
                     android:background="@drawable/w_cell_shape"
                     android:text=""
                     android:textColor="#ffffff"
@@ -215,11 +293,21 @@
                     android:textColor="#ffffff" />
 
                 <TextView
-                    android:id="@+id/plan_1_9"
+                    android:id="@+id/plan_1_9_1"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_gravity="center"
-                    android:layout_weight="3"
+                    android:layout_weight="2"
+                    android:background="@drawable/w_cell_shape"
+                    android:text=""
+                    android:textColor="#ffffff"
+                    android:textStyle="bold" />
+                <TextView
+                    android:id="@+id/plan_1_9_2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:layout_weight="2"
                     android:background="@drawable/w_cell_shape"
                     android:text=""
                     android:textColor="#ffffff"
@@ -239,11 +327,21 @@
                     android:textColor="#ffffff" />
 
                 <TextView
-                    android:id="@+id/plan_1_10"
+                    android:id="@+id/plan_1_10_1"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_gravity="center"
-                    android:layout_weight="3"
+                    android:layout_weight="2"
+                    android:background="@drawable/w_cell_shape"
+                    android:text=""
+                    android:textColor="#ffffff"
+                    android:textStyle="bold" />
+                <TextView
+                    android:id="@+id/plan_1_10_2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:layout_weight="2"
                     android:background="@drawable/w_cell_shape"
                     android:text=""
                     android:textColor="#ffffff"
@@ -263,11 +361,21 @@
                     android:textColor="#ffffff" />
 
                 <TextView
-                    android:id="@+id/plan_1_11"
+                    android:id="@+id/plan_1_11_1"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_gravity="center"
-                    android:layout_weight="3"
+                    android:layout_weight="2"
+                    android:background="@drawable/w_cell_shape"
+                    android:text=""
+                    android:textColor="#ffffff"
+                    android:textStyle="bold" />
+                <TextView
+                    android:id="@+id/plan_1_11_2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:layout_weight="2"
                     android:background="@drawable/w_cell_shape"
                     android:text=""
                     android:textColor="#ffffff"
@@ -287,11 +395,21 @@
                     android:textColor="#ffffff" />
 
                 <TextView
-                    android:id="@+id/plan_1_12"
+                    android:id="@+id/plan_1_12_1"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_gravity="center"
-                    android:layout_weight="3"
+                    android:layout_weight="2"
+                    android:background="@drawable/w_cell_shape"
+                    android:text=""
+                    android:textColor="#ffffff"
+                    android:textStyle="bold" />
+                <TextView
+                    android:id="@+id/plan_1_12_2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:layout_weight="2"
                     android:background="@drawable/w_cell_shape"
                     android:text=""
                     android:textColor="#ffffff"
@@ -311,11 +429,21 @@
                     android:textColor="#ffffff" />
 
                 <TextView
-                    android:id="@+id/plan_1_13"
+                    android:id="@+id/plan_1_13_1"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_gravity="center"
-                    android:layout_weight="3"
+                    android:layout_weight="2"
+                    android:background="@drawable/w_cell_shape"
+                    android:text=""
+                    android:textColor="#ffffff"
+                    android:textStyle="bold" />
+                <TextView
+                    android:id="@+id/plan_1_13_2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:layout_weight="2"
                     android:background="@drawable/w_cell_shape"
                     android:text=""
                     android:textColor="#ffffff"
@@ -335,11 +463,21 @@
                     android:textColor="#ffffff" />
 
                 <TextView
-                    android:id="@+id/plan_1_14"
+                    android:id="@+id/plan_1_14_1"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_gravity="center"
-                    android:layout_weight="3"
+                    android:layout_weight="2"
+                    android:background="@drawable/w_cell_shape"
+                    android:text=""
+                    android:textColor="#ffffff"
+                    android:textStyle="bold" />
+                <TextView
+                    android:id="@+id/plan_1_14_2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:layout_weight="2"
                     android:background="@drawable/w_cell_shape"
                     android:text=""
                     android:textColor="#ffffff"
@@ -359,11 +497,21 @@
                     android:textColor="#ffffff" />
 
                 <TextView
-                    android:id="@+id/plan_1_15"
+                    android:id="@+id/plan_1_15_1"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_gravity="center"
-                    android:layout_weight="3"
+                    android:layout_weight="2"
+                    android:background="@drawable/w_cell_shape"
+                    android:text=""
+                    android:textColor="#ffffff"
+                    android:textStyle="bold" />
+                <TextView
+                    android:id="@+id/plan_1_15_2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:layout_weight="2"
                     android:background="@drawable/w_cell_shape"
                     android:text=""
                     android:textColor="#ffffff"
@@ -383,11 +531,21 @@
                     android:textColor="#ffffff" />
 
                 <TextView
-                    android:id="@+id/plan_1_16"
+                    android:id="@+id/plan_1_16_1"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_gravity="center"
-                    android:layout_weight="3"
+                    android:layout_weight="2"
+                    android:background="@drawable/w_cell_shape"
+                    android:text=""
+                    android:textColor="#ffffff"
+                    android:textStyle="bold" />
+                <TextView
+                    android:id="@+id/plan_1_16_2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:layout_weight="2"
                     android:background="@drawable/w_cell_shape"
                     android:text=""
                     android:textColor="#ffffff"
@@ -407,11 +565,21 @@
                     android:textColor="#ffffff" />
 
                 <TextView
-                    android:id="@+id/plan_1_17"
+                    android:id="@+id/plan_1_17_1"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_gravity="center"
-                    android:layout_weight="3"
+                    android:layout_weight="2"
+                    android:background="@drawable/w_cell_shape"
+                    android:text=""
+                    android:textColor="#ffffff"
+                    android:textStyle="bold" />
+                <TextView
+                    android:id="@+id/plan_1_17_2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:layout_weight="2"
                     android:background="@drawable/w_cell_shape"
                     android:text=""
                     android:textColor="#ffffff"
