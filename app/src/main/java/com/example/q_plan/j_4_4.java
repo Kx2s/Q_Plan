@@ -3,6 +3,8 @@ package com.example.q_plan;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 
@@ -52,10 +54,11 @@ public class j_4_4 extends AppCompatActivity implements View.OnClickListener {
         switch (v.getId()) {
             //종료 버튼클릭이벤트
             case R.id.end:
-
-            //이전 버튼 클릭이벤트
+                onBackPressed();
+                break;
+                //이전 버튼 클릭이벤트
             case R.id.former_open2:
-                Intent intent= new Intent(this, j_4_2.class);
+                Intent intent = new Intent(this, j_4_2.class);
                 startActivity(intent);
                 break;
         }

@@ -1,20 +1,16 @@
 package com.example.q_plan;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageButton;
-import android.widget.LinearLayout;
-import android.widget.ScrollView;
-import android.widget.TableLayout;
-import android.widget.TableRow;
-import android.widget.TextView;
+import android.widget.FrameLayout;
+
 
 import androidx.activity.result.ActivityResult;
 import androidx.activity.result.ActivityResultCallback;
@@ -30,11 +26,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class w_Nm2 extends Fragment{
+    FrameLayout contentFrame;
+    LayoutInflater inflater_table;
+    View view;
     int day=0;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        ViewGroup view = (ViewGroup) inflater.inflate(R.layout.j_2, container, false);
+        view = inflater.inflate(R.layout.j_2, container, false);
         //장소 추천 버튼 선언
         Button btn1=view.findViewById(R.id.Newbt);
         //시간표 생성 버튼 선언
@@ -46,7 +45,7 @@ public class w_Nm2 extends Fragment{
             @Override
             public void onClick(View v){
                 Intent intent= new Intent(getActivity(), j_4_1.class);
-                intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent);
             }
         });
@@ -71,18 +70,12 @@ public class w_Nm2 extends Fragment{
                             else if(result.equals("1박2일")){
                                 btn2.setVisibility(View.GONE);
                                 day=2;
+                                create_table(day);
                             }
                             else if(result.equals("2박3일")){
                                 btn2.setVisibility(View.GONE);
                                 day=3;
-                            }
-                            else if(result.equals("3박4일")){
-                                btn2.setVisibility(View.GONE);
-                                day=4;
-                            }
-                            else if(result.equals("4박5일")){
-                                btn2.setVisibility(View.GONE);
-                                day=5;
+                                create_table(day);
                             }
                         }
                     }
@@ -96,7 +89,6 @@ public class w_Nm2 extends Fragment{
                 launcher.launch(intent);
             }
         });
-
         // 창현
 
         RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.item_recyclerview2);
@@ -112,19 +104,17 @@ public class w_Nm2 extends Fragment{
 
         return view;
     }
-    public void create_table(int day){
-        LinearLayout container=(LinearLayout)getView().findViewById(R.id.time_container);
+    private void create_table(int day){
+        contentFrame=view.findViewById(R.id.time_container);
+        inflater_table= (LayoutInflater) view.getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         if(day==1){
-
+            inflater_table.inflate(R.layout.j_table_1,contentFrame,true);
         }
-//        TableLayout.LayoutParams layoutParams=new TableLayout.LayoutParams(TableLayout.LayoutParams.MATCH_PARENT, TableLayout.LayoutParams.WRAP_CONTENT,1f);
-//        TableLayout time_table=new TableLayout(getActivity());
-//        TableRow row[]=new TableRow[1];
-//        TextView text[][]=new TextView[1][1];
-//        row[0]=new TableRow(getActivity());
-//        text[0][0]=new TextView(getActivity());
-//        text[0][0].setBackgroundColor(Color.BLACK);
-//        row[0].addView(text[0][0]);
-//        time_table.addView(row[0]);
+        else if(day==2){
+            inflater_table.inflate(R.layout.j_table_2,contentFrame,true);
+        }
+        else if(day==3){
+            inflater_table.inflate(R.layout.j_table_3,contentFrame,true);
+        }
     }
 }
