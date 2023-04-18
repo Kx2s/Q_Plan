@@ -9,7 +9,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
@@ -20,8 +19,6 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
@@ -37,13 +34,12 @@ public class MainActivity extends AppCompatActivity {
     private FragmentManager fm;
     private FragmentTransaction ft;
     //종혁
+
     private StorageReference storageRef = FirebaseStorage.getInstance().getReference();
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
     public Userdata user = Userdata.getInstance();
+    public static Context mContext;
             //(Userdata) ();
-    //창현
-    public FirebaseAuth mAuth;
-    public FirebaseUser currentUser;
 
     boolean rt = false;
     EditText UserId, UserPw;
@@ -51,18 +47,18 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.title);
 
-        //창현
-        mAuth=FirebaseAuth.getInstance();
+        mContext = this;
 
         findViewById(R.id.Button_login).setOnClickListener(Login);
         findViewById(R.id.Button_signup).setOnClickListener(SignUp);
 
         UserId = findViewById(R.id.EditText_loginId);
         UserPw = findViewById(R.id.EditText_loginPw);
+
     }
+
     //로그인
     View.OnClickListener Login = new View.OnClickListener() {
         @Override
@@ -103,10 +99,15 @@ public class MainActivity extends AppCompatActivity {
                                                         System.out.println("Failure : " + e);
                                                     }
                                                 });
-                                        currentUser=mAuth.getCurrentUser();
-                                        Toast.makeText(MainActivity.this,
-                                                "환영합니다. " + user.getUserName() + " 님", Toast.LENGTH_SHORT).show();
-                                        toMain();
+
+                                        Map tmp = new HashMap();
+                                        tmp.put("category", "0");
+                                        tmp.put("areaCode", "34");
+
+                                        k_getApi qwe = new k_getApi(getApplicationContext());
+                                        qwe.set(tmp);
+                                        qwe.execute();
+
                                     } else {
                                         Toast.makeText(MainActivity.this, "비밀번호가 틀렸습니다.", Toast.LENGTH_SHORT).show();
                                     }
@@ -125,23 +126,6 @@ public class MainActivity extends AppCompatActivity {
         }
     };
 
-    //자동 로그인
-    @Override
-    public void onStart(){
-        super.onStart();
-        FirebaseUser currentUser=mAuth.getCurrentUser();
-        updateUI(currentUser);
-        toMain();
-    }
-    private void updateUI(FirebaseUser currentUser){
-        if(currentUser !=null){
-            Log.d("Tag","updateUI:유저 로그인 중");
-        }else{
-            Log.d("Tag","updateUI:유저 로그아웃 중");
-        }
-    }
-    //창현
-
     //회원가입
     View.OnClickListener SignUp = new View.OnClickListener() {
         @Override
@@ -153,31 +137,11 @@ public class MainActivity extends AppCompatActivity {
         }
     };
 
-    //Firebase 데이터 추가
-    private void writeNewUser (String name, String id, String pw) {
-
-        Map<String, Object> user = new HashMap<>();
-        user.put("Name", name);
-        user.put("ID", id);
-        user.put("PW", pw);
-
-        db.collection("Users").document(id).set(user)
-                .addOnSuccessListener(new OnSuccessListener<Void>() {
-                    @Override
-                    public void onSuccess(Void unused) {
-                        Toast.makeText(MainActivity.this, "가입을 환영합니다!", Toast.LENGTH_SHORT).show();
-                    }
-                })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(MainActivity.this, "다시 확인해주세요.", Toast.LENGTH_SHORT).show();
-                    }
-                });
-    }
-
     //종혁
     public void toMain() {
+        Toast.makeText(MainActivity.this,
+                "환영합니다. " + user.getUserName() + " 님", Toast.LENGTH_SHORT).show();
+
         setContentView(R.layout.w_activity_main);
 
         bottomNavigationView = findViewById(R.id.bottomNavi);
@@ -203,6 +167,7 @@ public class MainActivity extends AppCompatActivity {
         });
         setFrag(0);  // 첫화면 지정
     }
+
 
     // 화면 전환 실행문
     public void setFrag(int n){
