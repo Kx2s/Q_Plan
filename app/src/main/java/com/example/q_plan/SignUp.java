@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.EditText;
@@ -13,6 +14,9 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
@@ -26,6 +30,8 @@ public class SignUp extends AppCompatActivity {
     HashMap signUser = new HashMap();
     public boolean id_check = false;
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
+    //창현
+    private FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +40,10 @@ public class SignUp extends AppCompatActivity {
 
         findViewById(R.id.Button_cs_idcheck).setOnClickListener(checkId);
         findViewById(R.id.Button_cs_end).setOnClickListener(sign_end);
+        //창현
+        mAuth = FirebaseAuth.getInstance();
+        //창현
+
         //Back
         findViewById(R.id.Button_cs_back).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -79,6 +89,7 @@ public class SignUp extends AppCompatActivity {
 
             if (result.equals("")) {
                 Toast.makeText(SignUp.this, "회원가입 성공!", Toast.LENGTH_SHORT).show();
+                createUser(signUser.get("Email").toString(),signUser.get("Pw").toString());
                 sign();
                 finish();
             } else {
@@ -86,6 +97,22 @@ public class SignUp extends AppCompatActivity {
             }
         }
     };
+    public void createUser(String email, String password){
+        mAuth.createUserWithEmailAndPassword(email, password)
+                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if(task.isSuccessful()){
+                            Log.d("TAG", "createUserWithEmail:success");
+                            FirebaseUser user = mAuth.getCurrentUser();
+                        }else{
+                            Log.w("TAG", "createUserWithEmail:failure", task.getException());
+                            Toast.makeText(SignUp.this, "Authentication failed.",
+                                    Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
+    }
 
     //입력 체크
     public String sign_check() {
