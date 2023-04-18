@@ -20,10 +20,13 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
@@ -40,7 +43,9 @@ public class k_myPage extends Fragment {
     private TextView id;
     private TextView name;
     ImageView photo;
-
+    //로그아웃 구현(창현)
+    private FirebaseAuth mAuth ;
+    //창현
     Uri photoUri;
 
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -51,6 +56,10 @@ public class k_myPage extends Fragment {
         id = view.findViewById(R.id.textView_userId);
         name = view.findViewById(R.id.textView_userName);
 
+        //로그아웃 구현(창현)
+        mAuth = FirebaseAuth.getInstance();
+        //창현
+
         //유저 ID, 이름 표시
         id.setText(user.getUserId());
         name.setText(user.getUserName());
@@ -59,7 +68,7 @@ public class k_myPage extends Fragment {
                 .load(user.getUserImage())
                 .into(photo);
 
-        view.findViewById(R.id.button_FAQ).setOnClickListener(FAQ);
+        view.findViewById(R.id.button_LogOut).setOnClickListener(LogOut);
         view.findViewById(R.id.button_email).setOnClickListener(email);
         view.findViewById(R.id.button_changeInformation).setOnClickListener(changeInformation);
 
@@ -77,11 +86,15 @@ public class k_myPage extends Fragment {
         }
     };
 
-    //FAQ
-    View.OnClickListener FAQ = new View.OnClickListener() {
+    //LogOut
+    View.OnClickListener LogOut = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            //자주 묻는 질문 어케함?
+            FirebaseAuth.getInstance().signOut();
+            getActivity().finish();
+            startActivity(new Intent(getActivity(), MainActivity.class));
+            Toast.makeText(getActivity(),
+                    "로그아웃 되셨습니다.ㅂ", Toast.LENGTH_SHORT).show();
         }
     };
 
@@ -109,6 +122,8 @@ public class k_myPage extends Fragment {
             startActivity(intent);
         }
     };
+
+
 
     @Override
     public void onActivityResult(int requestCode, final int resultCode, @NonNull final Intent data) {

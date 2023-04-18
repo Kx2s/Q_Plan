@@ -63,11 +63,12 @@
         app:layout_constraintTop_toBottomOf="@+id/view"
         app:layout_constraintVertical_bias="0.13999999">
 
+        <!--창현 로그아웃 버튼 손댐-->
         <Button
-            android:id="@+id/button_FAQ"
+            android:id="@+id/button_LogOut"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="FAQ" />
+            android:text="LogOut" />
 
         <Space
             android:layout_width="20dp"
