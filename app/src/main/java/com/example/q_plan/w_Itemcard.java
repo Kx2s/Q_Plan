@@ -12,9 +12,11 @@ public class w_Itemcard {
     }
 
     public w_Itemcard(String title, String contents, String img){
-        this.contents = contents;
         this.title = title;
         this.img = img;
+        if(contents.isEmpty())
+            return;
+        this.contents = contents.substring(5);
     }
 
     public String getTitle() {
