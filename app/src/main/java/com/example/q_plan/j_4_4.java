@@ -20,7 +20,6 @@ public class j_4_4 extends AppCompatActivity implements View.OnClickListener {
     private View view;
     private w_RecycleAdapter adapter;
 
-    //j_4_3.xml open
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
