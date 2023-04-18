@@ -103,7 +103,7 @@ public class k_getApi extends AsyncTask<String, Void, String> {
         try {
 
             ArrayList<String> result = new ArrayList<String>();
-            for (Object i : Arrays.asList(12, 14, 15, 25, 28, 32, 38, 39)) {
+            for (Object i : Arrays.asList(12, 14, 15, 28, 32, 38, 39)) {
                 URL url = new URL(api + "?" + querySet() + "&contentTypeId=" + i.toString()); // 서버 URL
                 System.out.println(url);
                 HttpURLConnection conn = (HttpURLConnection) url.openConnection();

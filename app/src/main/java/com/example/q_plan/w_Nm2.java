@@ -99,7 +99,7 @@ public class w_Nm2 extends Fragment{
         for (int i = 0; i < 3; i++) {
             dataList.add(new w_Itemcard(i + "번째\n\n장소", "천안시\n\n 000" + i));
         }
-        w_RecycleAdapter adapter = new w_RecycleAdapter(dataList);
+        w_RecycleAdapter adapter = new w_RecycleAdapter(dataList, false);
         recyclerView.setAdapter(adapter);
 
         return view;

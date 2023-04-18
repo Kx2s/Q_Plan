@@ -1,31 +1,32 @@
 package com.example.q_plan;
 
-import java.util.Objects;
-
 public class w_Itemcard {
 
     private String title;
     private String contents;
+    private String img = "";
 
     public w_Itemcard(String title, String contents){
         this.contents = contents;
         this.title = title;
     }
 
-    public String getTitle() {
-        return title;
+    public w_Itemcard(String title, String contents, String img){
+        this.contents = contents;
+        this.title = title;
+        this.img = img;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public String getTitle() {
+        return title;
     }
 
     public String getContents() {
         return contents;
     }
 
-    public void setContents(String contents) {
-        this.contents = contents;
+    public String getImg() {
+        return img;
     }
 
     @Override
@@ -33,6 +34,7 @@ public class w_Itemcard {
         return "w_Itemcard{" +
                 "title='" + title + '\'' +
                 ", contents='" + contents + '\'' +
+                ", img='" + img + '\'' +
                 '}';
     }
 }

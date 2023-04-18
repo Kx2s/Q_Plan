@@ -17,9 +17,9 @@ import java.util.Map;
 public class k_readFile extends Application {
 
     List<Map> area = new ArrayList<>();
-    List<List> key = new ArrayList<>();
+    List<Map> key = new ArrayList<>();
 
-    List<List> result = Arrays.asList(area, key);
+    List<List<Map>> result = Arrays.asList(area, key);
 
     k_readFile() {
         ObjectMapper mapper = new ObjectMapper();
@@ -60,7 +60,7 @@ public class k_readFile extends Application {
         return instance;
     }
 
-    public List show(int a) {
+    public List<Map> show(int a) {
         return result.get(0);
     }
 }

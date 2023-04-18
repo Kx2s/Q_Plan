@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class w_Nm1 extends Fragment  {
 
@@ -32,12 +33,13 @@ public class w_Nm1 extends Fragment  {
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(layoutManager);
 
+        k_readFile f = k_readFile.getInstance();
         List<w_Itemcard>dataList = new ArrayList<>();
-        for (int i = 0; i<10; i++){
-            dataList.add(new w_Itemcard(i+"번째장소","천안시 000"+i));
+        for (Map o: f.show(0)) {
+            dataList.add(new w_Itemcard(o.get("title").toString(),o.get("addr1").toString(), o.get("firstimage").toString()));
         }
         //Recyclerview에서의 item 들을 출력할 형식(스타일)에 맞게 출력하기 위해 어뎁터를 사용
-        w_RecycleAdapter adapter = new w_RecycleAdapter(dataList);
+        w_RecycleAdapter adapter = new w_RecycleAdapter(dataList, true);
         recyclerView.setAdapter(adapter);
 
         //spinner 선언

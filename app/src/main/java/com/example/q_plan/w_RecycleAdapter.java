@@ -4,26 +4,38 @@ package com.example.q_plan;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.RequestManager;
 
 import java.util.List;
 
 public class w_RecycleAdapter extends RecyclerView.Adapter<w_RecycleAdapter.ViewHolder> {
 
-
     private final List<w_Itemcard> DataList;
+    private View view;
+    boolean bt;
 
-    public w_RecycleAdapter(List<w_Itemcard> dataList) {
+    public w_RecycleAdapter(List<w_Itemcard> dataList, boolean bt) {
         this.DataList = dataList;
+        this.bt = bt;
     }
 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.w_itemcard, parent, false);
+
+        if (bt)     //저장버튼 필요
+            view = LayoutInflater.from(parent.getContext()).inflate(R.layout.w_itemcard2, parent, false);
+        else        //필요없음
+            view = LayoutInflater.from(parent.getContext()).inflate(R.layout.w_itemcard, parent, false);
+
         return new ViewHolder(view);
     }
     // ↑ view Holder 를 통해서 강제로
@@ -32,8 +44,11 @@ public class w_RecycleAdapter extends RecyclerView.Adapter<w_RecycleAdapter.View
     @Override // 데이터 setting
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         w_Itemcard item = DataList.get(position);
+        System.out.println(DataList.get(position));
+        System.out.println(item.getImg());
         holder.title.setText(item.getTitle());
         holder.contents.setText(item.getContents());
+
     }
 
     //itme 갯수릂 파악하여 count하여 itme 생성형식을지정한다.
@@ -64,16 +79,13 @@ public class w_RecycleAdapter extends RecyclerView.Adapter<w_RecycleAdapter.View
 
         TextView title;
         TextView contents;
+        ImageView img;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             title = itemView.findViewById(R.id.title_text);
             contents = itemView.findViewById(R.id.contents_text);
-        }
-
-        public void bind(String text) {
-            title.setText(text);
-            contents.setText(text);
+            img = itemView.findViewById(R.id.img);
         }
     }
 }

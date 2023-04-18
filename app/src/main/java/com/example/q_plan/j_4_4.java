@@ -46,7 +46,7 @@ public class j_4_4 extends AppCompatActivity implements View.OnClickListener {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager((Context) this);
         recyclerView.setLayoutManager(linearLayoutManager);  // LayoutManager 설정
 
-        adapter = new w_RecycleAdapter(dataList);
+        adapter = new w_RecycleAdapter(dataList, false);
         recyclerView.setAdapter(adapter);
     }
     @Override

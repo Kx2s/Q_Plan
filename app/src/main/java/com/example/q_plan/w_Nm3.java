@@ -19,7 +19,7 @@ import java.util.List;
 public class w_Nm3 extends Fragment {
 
     private View view;
-    private w_RecycleAdapter2 adapter;
+    private w_RecycleAdapter adapter;
 
     @Nullable
     @Override
@@ -36,7 +36,7 @@ public class w_Nm3 extends Fragment {
             dataList.add(new w_Itemcard(i + "번째장소", "천안시 000" + i));
         }
 
-        adapter = new w_RecycleAdapter2(dataList);
+        adapter = new w_RecycleAdapter(dataList, false);
         recyclerView.setAdapter(adapter);
 
 
