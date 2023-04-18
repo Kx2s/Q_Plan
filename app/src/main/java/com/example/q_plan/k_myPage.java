@@ -20,8 +20,6 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 
 import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -32,8 +30,6 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
 import java.io.InputStream;
-import java.util.HashMap;
-import java.util.Map;
 
 public class k_myPage extends Fragment {
     private final int GALLERY_CODE = 10;
@@ -94,7 +90,7 @@ public class k_myPage extends Fragment {
             getActivity().finish();
             startActivity(new Intent(getActivity(), MainActivity.class));
             Toast.makeText(getActivity(),
-                    "로그아웃 되셨습니다.ㅂ", Toast.LENGTH_SHORT).show();
+                    "로그아웃 되셨습니다.", Toast.LENGTH_SHORT).show();
         }
     };
 
@@ -169,20 +165,3 @@ public class k_myPage extends Fragment {
         toast.show();
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
