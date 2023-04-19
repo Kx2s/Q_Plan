@@ -160,6 +160,11 @@ public class SignUp extends AppCompatActivity {
             return "비밀번호";
         else if (!temp.equals(edit.get(4).getText().toString()))
             return "비밀번호";
+        //비밀번호 6자리 이상 설정.
+        else if(temp.length()<6) {
+            Toast.makeText(this, "비밀번호를 6자리 이상으로 입력해주세요.", Toast.LENGTH_SHORT).show();
+            return "비밀번호";
+        }
 
         signUser.put("Pw", temp);
         System.out.println("비밀번호 : " + temp);
