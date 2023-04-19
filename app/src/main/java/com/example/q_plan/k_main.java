@@ -69,5 +69,5 @@ public class k_main extends AppCompatActivity {
                 ft.commit();
                 break;
         }
-    }// 종혁ㅇ /K_class 수정
+    }// 종혁 /K_class 수정
 }
