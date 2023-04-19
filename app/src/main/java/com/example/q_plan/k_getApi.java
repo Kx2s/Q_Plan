@@ -138,7 +138,11 @@ public class k_getApi extends AsyncTask<String, Void, String> {
     @Override
     protected void onPostExecute(String s) {
         super.onPostExecute(s);
+        //로그인
+        if (start) {
 
-        ((MainActivity)MainActivity.mContext).toMain();
+            ((MainActivity) MainActivity.mContext).toMain();
+            start = false;
+        }
     }
 }

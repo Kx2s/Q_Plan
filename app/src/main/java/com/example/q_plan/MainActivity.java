@@ -56,7 +56,6 @@ public class MainActivity extends AppCompatActivity {
 
         UserId = findViewById(R.id.EditText_loginId);
         UserPw = findViewById(R.id.EditText_loginPw);
-
     }
 
     //로그인
@@ -71,6 +70,9 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(MainActivity.this, "다시 입력해주세요.", Toast.LENGTH_SHORT).show();
                 return;
             }
+            //버튼 비활성화
+            findViewById(R.id.Button_login).setEnabled(false);
+
             //데베 확인
             db.collection("Users").document(getUserId).get()
                     .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
@@ -110,9 +112,13 @@ public class MainActivity extends AppCompatActivity {
 
                                     } else {
                                         Toast.makeText(MainActivity.this, "비밀번호가 틀렸습니다.", Toast.LENGTH_SHORT).show();
+                                        //버튼 활성화
+                                        findViewById(R.id.Button_login).setEnabled(true);
                                     }
                                 } else {
                                     Toast.makeText(MainActivity.this, "회원 정보가 없습니다.", Toast.LENGTH_SHORT).show();
+                                    //버튼 활성화
+                                    findViewById(R.id.Button_login).setEnabled(true);
                                 }
                             }
                         }
@@ -121,6 +127,8 @@ public class MainActivity extends AppCompatActivity {
                         @Override
                         public void onFailure(@NonNull Exception e) {
                             Toast.makeText(MainActivity.this, "인터넷 연결을 확인해주세요.", Toast.LENGTH_SHORT).show();
+                            //버튼 활성화
+                            findViewById(R.id.Button_login).setEnabled(true);
                         }
                     });
         }
@@ -137,59 +145,13 @@ public class MainActivity extends AppCompatActivity {
         }
     };
 
-    //종혁
+    //k_main 으로
     public void toMain() {
         Toast.makeText(MainActivity.this,
                 "환영합니다. " + user.getUserName() + " 님", Toast.LENGTH_SHORT).show();
 
-        setContentView(R.layout.w_activity_main);
-
-        bottomNavigationView = findViewById(R.id.bottomNavi);
-        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-                switch (menuItem.getItemId()){
-                    case R.id.action_nm1:
-                        setFrag(0);
-                        break;
-                    case R.id.action_nm2:
-                        setFrag(1);
-                        break;
-                    case R.id.action_nm3:
-                        setFrag(2);
-                        break;
-                    case R.id.action_nm4:
-                        setFrag(3);
-                        break;
-                }
-                return true;
-            }
-        });
-        setFrag(0);  // 첫화면 지정
+        //화면전환
+        Intent intent = new Intent(getApplicationContext(), k_main.class);
+        startActivity(intent);
     }
-
-
-    // 화면 전환 실행문
-    public void setFrag(int n){
-        fm = getSupportFragmentManager();
-        ft = fm.beginTransaction();
-        switch (n){
-            case 0:
-                ft.replace(R.id.main_frame, new w_Nm1());
-                ft.commit();
-                break;
-            case 1:
-                ft.replace(R.id.main_frame, new w_Nm2());
-                ft.commit();
-                break;
-            case 2:
-                ft.replace(R.id.main_frame, new w_Nm3());
-                ft.commit();
-                break;
-            case 3:
-                ft.replace(R.id.main_frame, new k_myPage());
-                ft.commit();
-                break;
-        }
-    }// 종혁ㅇ /K_class 수정
 }

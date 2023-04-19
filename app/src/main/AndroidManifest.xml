@@ -84,6 +84,7 @@
             android:noHistory="true"/>
         <activity android:name=".j_4_4"/>
         <activity android:name=".j_2_1"/>
+        <activity android:name=".k_main"/>
     </application>
 
 </manifest>
