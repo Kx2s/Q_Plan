@@ -24,7 +24,7 @@ public class k_readFile extends Application {
     k_readFile() {
         ObjectMapper mapper = new ObjectMapper();
         List<List<Map>> tmp = new ArrayList<>();
-        String fileName = "0.txt";
+        String fileName = "0.json";
         try {
             BufferedReader r = new BufferedReader(new FileReader("/data/data/com.example.q_plan/files/" + fileName));
             String str = "";
