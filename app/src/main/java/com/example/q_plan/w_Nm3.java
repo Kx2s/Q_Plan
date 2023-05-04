@@ -27,8 +27,6 @@ public class w_Nm3 extends Fragment {
         view = inflater.inflate(R.layout.w_nm3, container, false);
 
         RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.item_recyclerview3);
-
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL,false);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
 
         List<w_Itemcard> dataList = new ArrayList<>();

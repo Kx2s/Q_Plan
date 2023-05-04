@@ -13,10 +13,12 @@ public class w_Itemcard {
 
     public w_Itemcard(String title, String contents, String img){
         this.title = title;
-        this.img = img;
-        if(contents.isEmpty())
-            return;
-        this.contents = contents.substring(5);
+
+        if (!img.isEmpty())     //https 변경
+            this.img = new StringBuffer(img).insert(4, "s").toString();
+
+        if(!contents.isEmpty())
+            this.contents = contents.substring(9);
     }
 
     public String getTitle() {

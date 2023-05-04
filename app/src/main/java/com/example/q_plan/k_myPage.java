@@ -60,10 +60,12 @@ public class k_myPage extends Fragment {
         id.setText(user.getUserId());
         name.setText(user.getUserName());
 
+        //프로필 사진
         Glide.with(this)
                 .load(user.getUserImage())
                 .into(photo);
 
+        //버튼 세팅
         view.findViewById(R.id.button_LogOut).setOnClickListener(LogOut);
         view.findViewById(R.id.button_email).setOnClickListener(email);
         view.findViewById(R.id.button_changeInformation).setOnClickListener(changeInformation);
@@ -101,7 +103,9 @@ public class k_myPage extends Fragment {
             //개발자 이메일 복사
             ClipboardManager clipboardManager = (ClipboardManager) getActivity().getApplicationContext()
                     .getSystemService(Context.CLIPBOARD_SERVICE);
-            ClipData clipData = ClipData.newPlainText("Email", "Q_Plan@naver.com"); //클립보드에 ID라는 이름표로 id 값을 복사하여 저장
+
+            //클립보드에 ID라는 이름표로 id 값을 복사하여 저장
+            ClipData clipData = ClipData.newPlainText("Email", "Q_Plan@naver.com");
             clipboardManager.setPrimaryClip(clipData);
 
             toast("이메일이 복사되었습니다.");
@@ -112,8 +116,6 @@ public class k_myPage extends Fragment {
     View.OnClickListener changeInformation = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            k_readFile f = k_readFile.getInstance();
-            System.out.println(f.show(0));
             Intent intent = new Intent(getActivity().getApplicationContext(), k_changeinformation.class);
             startActivity(intent);
         }
@@ -121,17 +123,22 @@ public class k_myPage extends Fragment {
 
 
 
+    //갤러리
     @Override
     public void onActivityResult(int requestCode, final int resultCode, @NonNull final Intent data) {
 
+        //선택하지 않았을시
         if (data == null)
             return;
 
         if (requestCode == GALLERY_CODE) {
             Uri imageUri = data.getData();
 
+            //데이터베이스 사진 등록
             StorageReference riversRef = storageRef.child("Q_Plan/" + user.getUserId() + ".jpg");
             UploadTask uploadTask = riversRef.putFile(imageUri);
+
+            //프로필 변경
             try {
                 InputStream in =
                         getActivity().getContentResolver().openInputStream(data.getData());

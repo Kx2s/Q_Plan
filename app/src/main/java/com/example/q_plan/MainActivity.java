@@ -19,6 +19,11 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
@@ -35,13 +40,12 @@ public class MainActivity extends AppCompatActivity {
     private FragmentTransaction ft;
     //종혁
 
+    private DatabaseReference database = FirebaseDatabase.getInstance().getReference(); //BD json
     private StorageReference storageRef = FirebaseStorage.getInstance().getReference();
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
     public Userdata user = Userdata.getInstance();
     public static Context mContext;
-            //(Userdata) ();
 
-    boolean rt = false;
     EditText UserId, UserPw;
 
     @Override
@@ -51,11 +55,16 @@ public class MainActivity extends AppCompatActivity {
 
         mContext = this;
 
+        //버튼 설정
         findViewById(R.id.Button_login).setOnClickListener(Login);
         findViewById(R.id.Button_signup).setOnClickListener(SignUp);
 
+        //레이아웃 설정
         UserId = findViewById(R.id.EditText_loginId);
         UserPw = findViewById(R.id.EditText_loginPw);
+
+        //json 설정
+        database.child("data").addValueEventListener(valueEventListener);
     }
 
     //로그인
@@ -102,14 +111,15 @@ public class MainActivity extends AppCompatActivity {
                                                     }
                                                 });
 
+                                        //api 매개변수
                                         Map tmp = new HashMap();
                                         tmp.put("category", "0");
                                         tmp.put("areaCode", "34");
                                         tmp.put("sigunguCode", "12");
 
-                                        k_getApi qwe = new k_getApi(getApplicationContext());
-                                        qwe.set(tmp);
-                                        qwe.execute();
+                                        k_getApi api = new k_getApi(getApplicationContext());
+                                        api.set(tmp);
+                                        api.execute();
 
                                     } else {
                                         Toast.makeText(MainActivity.this, "비밀번호가 틀렸습니다.", Toast.LENGTH_SHORT).show();
@@ -155,4 +165,32 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(getApplicationContext(), k_main.class);
         startActivity(intent);
     }
+
+    ValueEventListener valueEventListener = new ValueEventListener() {
+        @Override
+        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+            // 데이터가 변경되었을 때 호출되는 메서드
+            // dataSnapshot에서 데이터를 가져와 사용합니다.
+            // 데이터를 가져오는 방법은 아래 코드를 참고하세요.
+
+
+            //이거 손볼차례
+            for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                System.out.println(dataSnapshot.toString());
+                break;
+//                String addr1 = snapshot.child("addr1").getValue(String.class);
+//                String contentid = snapshot.child("contentid").getValue(String.class);
+//                String firstimage = snapshot.child("firstimage").getValue(String.class);
+//                String mapx = snapshot.child("mapx").getValue(String.class);
+//                String mapy = snapshot.child("mapy").getValue(String.class);
+//                String title = snapshot.child("title").getValue(String.class);
+            }
+        }
+
+        @Override
+        public void onCancelled(@NonNull DatabaseError databaseError) {
+            // 데이터를 불러오는 도중 에러가 발생했을 때 호출되는 메서드
+            Toast.makeText(getApplicationContext(), "인터넷 연결을 확인해주세요.", Toast.LENGTH_SHORT).show();
+        }
+    };
 }

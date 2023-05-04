@@ -1,6 +1,7 @@
 package com.example.q_plan;
 
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,10 +22,15 @@ public class w_RecycleAdapter extends RecyclerView.Adapter<w_RecycleAdapter.View
     private final List<w_Itemcard> DataList;
     private View view;
     boolean bt;
+    Context context;
 
     public w_RecycleAdapter(List<w_Itemcard> dataList, boolean bt) {
         this.DataList = dataList;
         this.bt = bt;
+    }
+
+    public void setContext(Context context) {
+        this.context = context;
     }
 
     @NonNull
@@ -44,10 +50,21 @@ public class w_RecycleAdapter extends RecyclerView.Adapter<w_RecycleAdapter.View
     @Override // 데이터 setting
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         w_Itemcard item = DataList.get(position);
-        System.out.println(DataList.get(position));
-        System.out.println(item.getImg());
         holder.title.setText(item.getTitle());
         holder.contents.setText(item.getContents());
+
+        try {
+
+            System.out.println(item.getImg());
+            System.out.println(holder.img);
+
+            Glide.with(context)
+                    .load(item.getImg())
+                    .into(holder.img);
+
+        } catch (Exception e) {
+            System.out.println("에러 : " + e);
+        }
 
     }
 

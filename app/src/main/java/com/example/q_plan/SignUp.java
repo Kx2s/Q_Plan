@@ -58,11 +58,15 @@ public class SignUp extends AppCompatActivity {
         @Override
         public void onClick(View v) {
             EditText id = findViewById(R.id.EditText_cs_id);
+
+            //데이터베이스 확인
             db.collection("Users").get()
                     .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                         @Override
                         public void onComplete(@NonNull Task<QuerySnapshot> task) {
                             if (task.isSuccessful()) {
+
+                                //아이디 찾기
                                 for (DocumentSnapshot d : task.getResult()) {
                                     if (d.getId().equals(id.getText().toString())) {
                                         Toast.makeText(SignUp.this, "이미 사용중인 아이디입니다.", Toast.LENGTH_SHORT).show();
@@ -85,6 +89,7 @@ public class SignUp extends AppCompatActivity {
     View.OnClickListener sign_end = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
+            //문제없으면 "" 리턴, 있으면 문제항목 리턴
             String result = sign_check();
 
             if (result.equals("")) {
@@ -92,11 +97,13 @@ public class SignUp extends AppCompatActivity {
                 createUser(signUser.get("Email").toString(),signUser.get("Pw").toString());
                 sign();
                 finish();
+
             } else {
                 Toast.makeText(SignUp.this, result + " 을(를) 다시 확인해주세요.", Toast.LENGTH_SHORT).show();
             }
         }
     };
+
     public void createUser(String email, String password){
         mAuth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
