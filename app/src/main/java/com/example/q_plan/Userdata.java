@@ -2,18 +2,34 @@ package com.example.q_plan;
 
 import android.app.Application;
 import android.net.Uri;
+import android.util.Log;
 
+import androidx.annotation.NonNull;
+
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.FirebaseApp;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class Userdata extends Application {
 
+    private FirebaseFirestore db;
     private String userName;
     private int userAge;
     private String userId;
     private String userPw;
     private String userEmail;
     private Uri userImage;
-    private Map like;
+    private List like;
+
+    private Map<String, Map> json = new HashMap();
 
     //기본 정보 개수
     int num = 5;
@@ -21,6 +37,7 @@ public class Userdata extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+        db = FirebaseFirestore.getInstance();
     }
 
     @Override
@@ -35,24 +52,7 @@ public class Userdata extends Application {
         this.userId = doc.get("Id").toString();
         this.userPw = doc.get("Pw").toString();
         this.userEmail = doc.get("Email").toString();
-
-        int size = doc.size();
-        //찜 목록 있는지
-        if (size != num) {
-            int count = 0;
-
-
-            for (int i = 0; count + num != size; i++){
-                System.out.println("before");
-                if (doc.containsKey("like" + i)) {
-                    System.out.println((Map<String, String>)doc.get("like" + i));
-                    like.putAll((Map<String, String>)doc.get("like" + i));
-                    count++;
-                }
-                System.out.println("after");
-            }
-            System.out.println(like.values());
-        }
+        this.like = (List) doc.get("like");
     }
 
     //동기화
@@ -68,6 +68,10 @@ public class Userdata extends Application {
         this.userAge = Integer.parseInt(doc.get("Age").toString());
     }
 
+    public void setJson(Map json) {
+        this.json.putAll(json);
+    }
+
     public void setUserImage(Uri uri) { userImage = uri; }
 
     public Uri getUserImage() { return userImage; }
@@ -78,7 +82,49 @@ public class Userdata extends Application {
 
     public String getUserId() { return userId; }
 
-    public String getUserPw() { return userPw; }
+    public List<String> getLike() { return like; }
 
-    public String getUserEmail() { return userEmail; }
+    public List<String> getJson() {
+        return new ArrayList(json.keySet());
+    }
+
+    public Map<String, String> getContent (String id) {
+        System.out.println("id : " + id);
+        System.out.println(json.get(id));
+        return json.get(id);
+    }
+
+    public void addLike(String id) {
+        like.add(id);
+
+        db.collection("Users").document(userId).get()
+                .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                    @Override
+                    public void onSuccess(DocumentSnapshot documentSnapshot) {
+                        if (documentSnapshot.exists()) {
+                            List<String> list = (List<String>) documentSnapshot.get("like");
+
+                            if (list == null) {
+                                list = new ArrayList<>();
+                            }
+                            list.add(id);
+                            Map update = new HashMap();
+                            update.put("like", list);
+                            db.collection("Users").document(userId).update(update)
+                                    .addOnSuccessListener(new OnSuccessListener() {
+                                        @Override
+                                        public void onSuccess(Object o) {
+                                            Log.i("찜", "찜 성공");
+                                        }
+                                    })
+                                    .addOnFailureListener(new OnFailureListener() {
+                                        @Override
+                                        public void onFailure(@NonNull Exception e) {
+                                            Log.w("찜", "찜 실패");
+                                        }
+                                    });
+                        }
+                    }
+                });
+    }
 }

@@ -5,6 +5,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -23,6 +24,7 @@ public class w_RecycleAdapter extends RecyclerView.Adapter<w_RecycleAdapter.View
     private View view;
     boolean bt;
     Context context;
+    Userdata user = Userdata.getInstance();
 
     public w_RecycleAdapter(List<w_Itemcard> dataList, boolean bt) {
         this.DataList = dataList;
@@ -37,8 +39,10 @@ public class w_RecycleAdapter extends RecyclerView.Adapter<w_RecycleAdapter.View
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
-        if (bt)     //저장버튼 필요
+        if (bt) {    //저장버튼 필요
             view = LayoutInflater.from(parent.getContext()).inflate(R.layout.w_itemcard2, parent, false);
+
+        }
         else        //필요없음
             view = LayoutInflater.from(parent.getContext()).inflate(R.layout.w_itemcard, parent, false);
 
@@ -54,10 +58,7 @@ public class w_RecycleAdapter extends RecyclerView.Adapter<w_RecycleAdapter.View
         holder.contents.setText(item.getContents());
 
         try {
-
             System.out.println(item.getImg());
-            System.out.println(holder.img);
-
             Glide.with(context)
                     .load(item.getImg())
                     .into(holder.img);
@@ -65,6 +66,15 @@ public class w_RecycleAdapter extends RecyclerView.Adapter<w_RecycleAdapter.View
         } catch (Exception e) {
             System.out.println("에러 : " + e);
         }
+
+        try{
+        holder.cartbt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                user.addLike(item.getId());
+            }
+        });
+        } catch (Exception e){}
 
     }
 
@@ -97,12 +107,15 @@ public class w_RecycleAdapter extends RecyclerView.Adapter<w_RecycleAdapter.View
         TextView title;
         TextView contents;
         ImageView img;
+        Button cartbt;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             title = itemView.findViewById(R.id.title_text);
             contents = itemView.findViewById(R.id.contents_text);
             img = itemView.findViewById(R.id.img);
+            cartbt = itemView.findViewById(R.id.cartbt);
+
         }
     }
 }

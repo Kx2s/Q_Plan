@@ -1,24 +1,42 @@
 package com.example.q_plan;
 
+import com.google.firebase.firestore.auth.User;
+
+import java.util.Map;
+
 public class w_Itemcard {
 
+    private String id;
     private String title;
     private String contents;
     private String img = "";
 
+    private Userdata user = Userdata.getInstance();
+    public w_Itemcard(String id) {
+        this.id = id;
+
+        Map<String, String> tmp = user.getContent(id);
+        System.out.println(tmp.toString());
+        title = tmp.get("title");
+        contents = tmp.get("addr");
+        img = tmp.get("image");
+
+        if(!contents.isEmpty())
+            contents = contents.replace("충청남도 ", "").replace("충남 ", "");
+
+        if (img != "")     //https 변경
+            img = img.replace("https", "http").replace("http", "https").trim();
+        else {
+            img = "R.drawable.ic_launcher_background";
+        }
+    }
     public w_Itemcard(String title, String contents){
         this.contents = contents;
         this.title = title;
     }
 
-    public w_Itemcard(String title, String contents, String img){
-        this.title = title;
-
-        if (!img.isEmpty())     //https 변경
-            this.img = new StringBuffer(img).insert(4, "s").toString();
-
-        if(!contents.isEmpty())
-            this.contents = contents.substring(9);
+    public String getId() {
+        return id;
     }
 
     public String getTitle() {

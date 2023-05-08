@@ -19,6 +19,7 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.FirebaseApp;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -40,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
     private FragmentTransaction ft;
     //종혁
 
-    private DatabaseReference database = FirebaseDatabase.getInstance().getReference(); //BD json
+    private DatabaseReference database = FirebaseDatabase.getInstance().getReference("data"); //BD json
     private StorageReference storageRef = FirebaseStorage.getInstance().getReference();
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
     public Userdata user = Userdata.getInstance();
@@ -52,6 +53,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.title);
+        FirebaseApp.initializeApp(this);
 
         mContext = this;
 
@@ -64,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
         UserPw = findViewById(R.id.EditText_loginPw);
 
         //json 설정
-        database.child("data").addValueEventListener(valueEventListener);
+        database.addValueEventListener(valueEventListener);
     }
 
     //로그인
@@ -173,17 +175,21 @@ public class MainActivity extends AppCompatActivity {
             // dataSnapshot에서 데이터를 가져와 사용합니다.
             // 데이터를 가져오는 방법은 아래 코드를 참고하세요.
 
-
-            //이거 손볼차례
+            //json db 임시저장
             for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                System.out.println(dataSnapshot.toString());
-                break;
-//                String addr1 = snapshot.child("addr1").getValue(String.class);
-//                String contentid = snapshot.child("contentid").getValue(String.class);
-//                String firstimage = snapshot.child("firstimage").getValue(String.class);
-//                String mapx = snapshot.child("mapx").getValue(String.class);
-//                String mapy = snapshot.child("mapy").getValue(String.class);
-//                String title = snapshot.child("title").getValue(String.class);
+                user.setJson(new HashMap() {
+                    {
+                        put(snapshot.child("contentid").getValue(String.class), new HashMap() {
+                            {
+                                put("addr", snapshot.child("addr1").getValue(String.class));
+                                put("image", snapshot.child("firstimage").getValue(String.class));
+                                put("x", snapshot.child("mapx").getValue(String.class));
+                                put("y", snapshot.child("mapy").getValue(String.class));
+                                put("title", snapshot.child("title").getValue(String.class));
+                            }
+                        });
+                    }
+                });
             }
         }
 

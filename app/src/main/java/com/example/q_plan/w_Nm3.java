@@ -20,6 +20,7 @@ public class w_Nm3 extends Fragment {
 
     private View view;
     private w_RecycleAdapter adapter;
+    public Userdata user = Userdata.getInstance();
 
     @Nullable
     @Override
@@ -30,8 +31,8 @@ public class w_Nm3 extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
 
         List<w_Itemcard> dataList = new ArrayList<>();
-        for (int i = 0; i < 10; i++) {
-            dataList.add(new w_Itemcard(i + "번째장소", "천안시 000" + i));
+        for (String id : user.getLike()){
+            dataList.add(new w_Itemcard(id));
         }
 
         adapter = new w_RecycleAdapter(dataList, false);
