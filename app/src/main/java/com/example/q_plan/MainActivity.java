@@ -41,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
     private FragmentTransaction ft;
     //종혁
 
+
     private DatabaseReference database = FirebaseDatabase.getInstance().getReference("data"); //BD json
     private StorageReference storageRef = FirebaseStorage.getInstance().getReference();
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
