@@ -112,16 +112,8 @@ public class MainActivity extends AppCompatActivity {
                                                         System.out.println("Failure : " + e);
                                                     }
                                                 });
-
-                                        //api 매개변수
-                                        Map tmp = new HashMap();
-                                        tmp.put("category", "0");
-                                        tmp.put("areaCode", "34");
-                                        tmp.put("sigunguCode", "12");
-
-                                        k_getApi api = new k_getApi(getApplicationContext());
-                                        api.set(tmp);
-                                        api.execute();
+                                        //메인 페이지로
+                                        toMain();
 
                                     } else {
                                         Toast.makeText(MainActivity.this, "비밀번호가 틀렸습니다.", Toast.LENGTH_SHORT).show();

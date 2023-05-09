@@ -16,7 +16,6 @@ public class w_Itemcard {
         this.id = id;
 
         Map<String, String> tmp = user.getContent(id);
-        System.out.println(tmp.toString());
         title = tmp.get("title");
         contents = tmp.get("addr");
         img = tmp.get("image");
