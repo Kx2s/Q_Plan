@@ -28,6 +28,7 @@ public class w_Itemcard {
         else {
             img = "R.drawable.ic_launcher_background";
         }
+        System.out.println(img);
     }
     public w_Itemcard(String title, String contents){
         this.contents = contents;

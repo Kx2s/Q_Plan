@@ -45,7 +45,7 @@ public class w_Nm1 extends Fragment  {
             dataList.add(new w_Itemcard(key));
         }
 
-        //Recyclerview에서의 item 들을 출력할 형식(스타일)에 맞게 출력하기 위해 어댑ㅁ으ㅑㅜ터를 사용
+        //Recyclerview에서의 item 들을 출력할 형식(스타일)에 맞게 출력하기 위해 어댑터를 사용
         w_RecycleAdapter adapter = new w_RecycleAdapter(dataList, true);
         adapter.setContext(this.getContext());
         recyclerView.setAdapter(adapter);

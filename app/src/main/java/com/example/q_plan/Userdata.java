@@ -20,7 +20,7 @@ import java.util.Map;
 
 public class Userdata extends Application {
 
-    private FirebaseFirestore db = FirebaseFirestore.getInstance();
+    private FirebaseFirestore db;
     private String userName;
     private int userAge;
     private String userId;
@@ -37,7 +37,6 @@ public class Userdata extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        FirebaseApp.initializeApp(this);
     }
 
     @Override
@@ -97,6 +96,7 @@ public class Userdata extends Application {
     public void addLike(String id) {
         like.add(id);
 
+        db = FirebaseFirestore.getInstance();
         db.collection("Users").document(userId).get()
                 .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
                     @Override
