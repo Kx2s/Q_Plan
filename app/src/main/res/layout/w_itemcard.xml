@@ -20,7 +20,7 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="150dp">
+            android:layout_height="100dp">
 
 
             <ImageView
@@ -37,7 +37,7 @@
                 android:layout_alignParentBottom="true"
                 android:padding="10dp"
                 android:textColor="#ffffff"
-                android:textSize="20dp"
+                android:textSize="10dp"
                 tools:text="Title" />
 
 
@@ -50,7 +50,7 @@
             android:layout_gravity="center"
             android:hint="카드뷰예시입니다."
             android:textColor="#7F7F7F"
-            android:textSize="40sp"
+            android:textSize="25dp"
             tools:text="" />
     </LinearLayout>
 </androidx.cardview.widget.CardView>
