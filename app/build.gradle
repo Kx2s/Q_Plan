@@ -37,6 +37,7 @@ dependencies {
     implementation('com.google.android.gms:play-services-location:21.0.1')  //구글 맵 API
     implementation platform('com.google.firebase:firebase-bom:31.3.0')  //auth
     implementation 'com.google.firebase:firebase-auth'                  //auth
+    implementation 'com.google.android.material:material:1.4.0-alpha02' //위치정보가져오기
     implementation 'androidx.appcompat:appcompat:1.5.1'
     implementation 'com.google.android.material:material:1.7.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
