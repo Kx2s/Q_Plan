@@ -41,7 +41,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-public class w_Nm1 extends Fragment  implements OnMapReadyCallback{
+public class w_Nm1 extends Fragment implements OnMapReadyCallback{
     //구글맵 변수 선언
     private MapView googlemap=null;
     public Userdata user = Userdata.getInstance();
