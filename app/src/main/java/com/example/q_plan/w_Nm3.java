@@ -36,6 +36,7 @@ public class w_Nm3 extends Fragment {
         }
 
         adapter = new w_RecycleAdapter(dataList, false);
+        adapter.setContext(this.getContext());
         recyclerView.setAdapter(adapter);
 
 
@@ -49,8 +50,8 @@ public class w_Nm3 extends Fragment {
 
             @Override
             public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
-                adapter.removeItem(viewHolder.getAdapterPosition());
-
+                user.removeLike(    //like 삭제
+                        adapter.removeItem(viewHolder.getAdapterPosition()));   //view를 삭제하며 id 값을 반환하게 수정함
             }
 
             // 터치 이벤트

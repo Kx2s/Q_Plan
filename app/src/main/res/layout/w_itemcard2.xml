@@ -30,12 +30,12 @@
                 android:src="@drawable/ic_launcher_background" />
 
             <TextView
-                android:id="@+id/title_text"
+                android:id="@+id/address_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
                 android:padding="10dp"
-                tools:text="Title"
+                tools:text="Address"
                 android:textColor="#ffffff"
                 android:textSize="20dp"/>
 
@@ -58,7 +58,7 @@
 
         </RelativeLayout>
         <TextView
-            android:id="@+id/contents_text"
+            android:id="@+id/title_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"

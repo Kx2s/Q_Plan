@@ -2,6 +2,7 @@ package com.example.q_plan;
 
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,11 +11,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.RequestManager;
 
 import java.util.List;
 
@@ -39,10 +38,8 @@ public class w_RecycleAdapter extends RecyclerView.Adapter<w_RecycleAdapter.View
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
-        if (bt) {    //저장버튼 필요
+        if (bt)     //저장버튼 필요
             view = LayoutInflater.from(parent.getContext()).inflate(R.layout.w_itemcard2, parent, false);
-
-        }
         else        //필요없음
             view = LayoutInflater.from(parent.getContext()).inflate(R.layout.w_itemcard, parent, false);
 
@@ -55,16 +52,15 @@ public class w_RecycleAdapter extends RecyclerView.Adapter<w_RecycleAdapter.View
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         w_Itemcard item = DataList.get(position);
         holder.title.setText(item.getTitle());
-        holder.contents.setText(item.getContents());
+        holder.address.setText(item.getAddress());
 
         try {
-            System.out.println(item.getImg());
             Glide.with(context)
                     .load(item.getImg())
                     .into(holder.img);
 
         } catch (Exception e) {
-            System.out.println("에러 : " + e);
+            Log.e("Glide 에러", e.toString());
         }
 
         try{
@@ -96,23 +92,26 @@ public class w_RecycleAdapter extends RecyclerView.Adapter<w_RecycleAdapter.View
         return  true;
     }
     // Item 삭제
-    public void removeItem(int position){
+    public String removeItem(int position){
+        String id = DataList.get(position).getId();
         DataList.remove(position);
         notifyItemRemoved(position);
+
+        return id;
     }
 
     //viewHolder에 데이터의 정보를 setting 한다.
     public class ViewHolder extends RecyclerView.ViewHolder {
 
         TextView title;
-        TextView contents;
+        TextView address;
         ImageView img;
         Button cartbt;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             title = itemView.findViewById(R.id.title_text);
-            contents = itemView.findViewById(R.id.contents_text);
+            address = itemView.findViewById(R.id.address_text);
             img = itemView.findViewById(R.id.img);
             cartbt = itemView.findViewById(R.id.cartbt);
 

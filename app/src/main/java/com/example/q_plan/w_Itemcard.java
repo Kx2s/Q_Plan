@@ -1,14 +1,12 @@
 package com.example.q_plan;
 
-import com.google.firebase.firestore.auth.User;
-
 import java.util.Map;
 
 public class w_Itemcard {
 
     private String id;
     private String title;
-    private String contents;
+    private String address;
     private String img = "";
 
     private Userdata user = Userdata.getInstance();
@@ -17,21 +15,20 @@ public class w_Itemcard {
 
         Map<String, String> tmp = user.getContent(id);
         title = tmp.get("title");
-        contents = tmp.get("addr");
+        address = tmp.get("addr");
         img = tmp.get("image");
 
-        if(!contents.isEmpty())
-            contents = contents.replace("충청남도 ", "").replace("충남 ", "");
+        if(!address.isEmpty())
+            address = address.replace("충청남도 ", "").replace("충남 ", "");
 
         if (img != "")     //https 변경
             img = img.replace("https", "http").replace("http", "https").trim();
         else {
             img = "R.drawable.ic_launcher_background";
         }
-        System.out.println(img);
     }
-    public w_Itemcard(String title, String contents){
-        this.contents = contents;
+    public w_Itemcard(String title, String address){
+        this.address = address;
         this.title = title;
     }
 
@@ -43,8 +40,8 @@ public class w_Itemcard {
         return title;
     }
 
-    public String getContents() {
-        return contents;
+    public String getAddress() {
+        return address;
     }
 
     public String getImg() {
@@ -55,7 +52,7 @@ public class w_Itemcard {
     public String toString() {
         return "w_Itemcard{" +
                 "title='" + title + '\'' +
-                ", contents='" + contents + '\'' +
+                ", contents='" + address + '\'' +
                 ", img='" + img + '\'' +
                 '}';
     }

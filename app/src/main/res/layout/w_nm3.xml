@@ -44,7 +44,10 @@
                     tools:listitem="@layout/w_itemcard">
 
                 </androidx.recyclerview.widget.RecyclerView>
+
             </LinearLayout>
         </ScrollView>
+
     </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

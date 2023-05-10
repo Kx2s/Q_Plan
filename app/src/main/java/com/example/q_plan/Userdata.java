@@ -94,6 +94,9 @@ public class Userdata extends Application {
     }
 
     public void addLike(String id) {
+        //이미 목록에 있다면 리턴
+        if (like.contains(id))
+            return;
         like.add(id);
 
         db = FirebaseFirestore.getInstance();
@@ -121,6 +124,40 @@ public class Userdata extends Application {
                                         @Override
                                         public void onFailure(@NonNull Exception e) {
                                             Log.w("찜", "찜 실패");
+                                        }
+                                    });
+                        }
+                    }
+                });
+    }
+    public void removeLike(String id) {
+        like.remove(id);
+
+        db = FirebaseFirestore.getInstance();
+        db.collection("Users").document(userId).get()
+                .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                    @Override
+                    public void onSuccess(DocumentSnapshot documentSnapshot) {
+                        if (documentSnapshot.exists()) {
+                            List<String> list = (List<String>) documentSnapshot.get("like");
+
+                            if (list == null) {
+                                list = new ArrayList<>();
+                            }
+                            list.remove(id);
+                            Map update = new HashMap();
+                            update.put("like", list);
+                            db.collection("Users").document(userId).update(update)
+                                    .addOnSuccessListener(new OnSuccessListener() {
+                                        @Override
+                                        public void onSuccess(Object o) {
+                                            Log.i("찜", "찜 삭제");
+                                        }
+                                    })
+                                    .addOnFailureListener(new OnFailureListener() {
+                                        @Override
+                                        public void onFailure(@NonNull Exception e) {
+                                            Log.w("찜", "찜 삭제 실패");
                                         }
                                     });
                         }
