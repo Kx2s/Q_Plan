@@ -1,17 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="place">
-        <item id='p0'>전체</item>ㄹ
-        <item id='p1'>자연 관광지</item>
-        <item id='p2'>역사관광지</item>
-        <item id='p3'>휴양관광지</item>
-        <item id='p4'>체험관광지</item>
-        <item id='p5'>산업관광지</item>
-        <item id='p6'>건축/조형물</item>
-        <item id='p7'>문화시설</item>
-        <item id='p8'>축제</item>
-        <item id='p9'>공연/행사</item>
-        <item id='p10'>쇼핑</item>
-        <item id='p11'>음식</item>
+        <item value="0">전체</item>
+        <item value="12">관광지</item>
+        <item value="13">문화시설</item>
+        <item value="15">행사</item>
+        <item value="28">레포츠</item>
+        <item value="32">숙박</item>
+        <item value="38">쇼핑</item>
+        <item value="39">음식점</item>
     </string-array>
 </resources>
+    <!--<item id='p0'>전체</item>
+    <item id='p1'>자연 관광지</item>
+    <item id='p2'>역사관광지</item>
+    <item id='p3'>휴양관광지</item>
+    <item id='p4'>체험관광지</item>
+    <item id='p5'>산업관광지</item>
+    <item id='p6'>건축/조형물</item>
+    <item id='p7'>문화시설</item>
+    <item id='p8'>축제</item>
+    <item id='p9'>공연/행사</item>
+    <item id='p10'>쇼핑</item>
+    <item id='p11'>음식</item>-->

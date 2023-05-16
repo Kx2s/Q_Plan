@@ -9,6 +9,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
@@ -24,13 +25,16 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.GenericTypeIndicator;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
@@ -159,6 +163,7 @@ public class MainActivity extends AppCompatActivity {
         //화면전환
         Intent intent = new Intent(getApplicationContext(), k_main.class);
         startActivity(intent);
+        finish();
     }
 
     ValueEventListener valueEventListener = new ValueEventListener() {
@@ -170,19 +175,28 @@ public class MainActivity extends AppCompatActivity {
 
             //json db 임시저장
             for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                user.setJson(new HashMap() {
-                    {
-                        put(snapshot.child("contentid").getValue(String.class), new HashMap() {
-                            {
-                                put("addr", snapshot.child("addr1").getValue(String.class));
-                                put("image", snapshot.child("firstimage").getValue(String.class));
-                                put("x", snapshot.child("mapx").getValue(String.class));
-                                put("y", snapshot.child("mapy").getValue(String.class));
-                                put("title", snapshot.child("title").getValue(String.class));
-                            }
-                        });
-                    }
-                });
+
+                HashMap<String, Object> innerMap = new HashMap<>();
+                Object tmp = snapshot.child("addr1").getValue();
+
+                List<String> tag;
+                if (tmp instanceof List)
+                    tag = (List<String>) tmp;
+                else {
+                    tag = new ArrayList<>();
+                    tag.add((String) tmp);
+                }
+
+                innerMap.put("addr", snapshot.child("addr1").getValue(String.class));
+                innerMap.put("image", snapshot.child("firstimage").getValue(String.class));
+                innerMap.put("x", snapshot.child("mapx").getValue(String.class));
+                innerMap.put("y", snapshot.child("mapy").getValue(String.class));
+                innerMap.put("title", snapshot.child("title").getValue(String.class));
+                innerMap.put("contenttypeid", snapshot.child("contenttypeid").getValue(String.class));
+                innerMap.put("tag", tag);
+
+                user.getJson().put(snapshot.child("contentid").getValue(String.class), innerMap);
+
             }
         }
 

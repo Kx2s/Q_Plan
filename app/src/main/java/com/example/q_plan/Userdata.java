@@ -83,13 +83,11 @@ public class Userdata extends Application {
 
     public List<String> getLike() { return like; }
 
-    public List<String> getJson() {
-        return new ArrayList(json.keySet());
+    public Map<String, Map> getJson() {
+        return json;
     }
 
     public Map<String, String> getContent (String id) {
-        System.out.println("id : " + id);
-        System.out.println(json.get(id));
         return json.get(id);
     }
 
