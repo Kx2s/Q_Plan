@@ -155,8 +155,8 @@ public class w_Nm1 extends Fragment implements OnMapReadyCallback {
     }
 
     @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState){
-        super.onViewCreated(view,savedInstanceState);
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
         //액티비티가 처음 생성될 때 실행되는 함수
         MapsInitializer.initialize(mContext);
         locationRequest = LocationRequest.create()
@@ -309,7 +309,7 @@ public class w_Nm1 extends Fragment implements OnMapReadyCallback {
             if (mLocationPermissionGranted) {
                 mFusedLocationProviderClient.requestLocationUpdates(locationRequest, locationCallback, Looper.myLooper());
             }
-        } catch (SecurityException e)  {
+        } catch (SecurityException e) {
             Log.e("Exception: %s", e.getMessage());
         }
     }
@@ -388,8 +388,11 @@ public class w_Nm1 extends Fragment implements OnMapReadyCallback {
         mapView.onResume();
         getLocationPermission();
         if (mLocationPermissionGranted) {
-            Log.d(TAG, "onResume : requestLoctionUpdates");
-            ActivityCompat.requestPermissions(mContext, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION);
+            if (ActivityCompat.checkSelfPermission(mContext, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(mContext, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+
+                return;
+            }
+            mFusedLocationProviderClient.requestLocationUpdates(locationRequest, locationCallback, null);
         }
     }
     @Override
