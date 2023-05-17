@@ -84,7 +84,7 @@ public class w_Nm1 extends Fragment implements OnMapReadyCallback {
     private boolean mLocationPermissionGranted;
 
     private static final int GPS_ENABLE_REQUEST_CODE = 2001;
-    private static final int UPDATE_INTERVAL_MS = 1000 * 60 * 1;  // 1분
+    private static final int UPDATE_INTERVAL_MS = 1000 * 60 * 10;  // 10분
     private static final int FASTEST_UPDATE_INTERVAL_MS = 1000 * 30; // 0.5초
 
     private static final String KEY_CAMERA_POSITION = "camera_position";
