@@ -27,6 +27,8 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.app.ActivityCompat;
@@ -66,6 +68,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
@@ -88,7 +91,7 @@ public class w_Nm1 extends Fragment implements OnMapReadyCallback {
     private boolean mLocationPermissionGranted;
 
     private static final int GPS_ENABLE_REQUEST_CODE = 2001;
-    private static final int UPDATE_INTERVAL_MS = 1000 * 60 * 1;  // 10초
+    private static final int UPDATE_INTERVAL_MS = 1000 * 60 * 1;  // 1분
     private static final int FASTEST_UPDATE_INTERVAL_MS = 1000 * 30; // 0.5초
 
     private static final String KEY_CAMERA_POSITION = "camera_position";
@@ -110,9 +113,9 @@ public class w_Nm1 extends Fragment implements OnMapReadyCallback {
 
     //Fragment가 Activity에 attach될때 호출
     @Override
-    public void onAttach(Activity activity) {
-        mContext = (FragmentActivity) activity;
-        super.onAttach(activity);
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        mContext = getActivity();
     }
 
     // 초기화 해야 하는 리소스들을 여기서 초기화
@@ -281,12 +284,11 @@ public class w_Nm1 extends Fragment implements OnMapReadyCallback {
     }
 
     @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState){
+        super.onViewCreated(view,savedInstanceState);
         //액티비티가 처음 생성될 때 실행되는 함수
         MapsInitializer.initialize(mContext);
-
-        locationRequest = new LocationRequest()
+        locationRequest = LocationRequest.create()
                 .setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY) // 정확도를 최우선적으로 고려
                 .setInterval(UPDATE_INTERVAL_MS) // 위치가 Update 되는 주기
                 .setFastestInterval(FASTEST_UPDATE_INTERVAL_MS); // 위치 획득후 업데이트되는 주기
@@ -309,28 +311,12 @@ public class w_Nm1 extends Fragment implements OnMapReadyCallback {
     @Override
     public void onMapReady(GoogleMap map) {
         mMap = map;
-        mFusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(mContext);
 
         // GPS를 찾지 못하는 장소에 있을 경우 지도의 초기 위치가 필요함.
         setDefaultLocation();
+        getLocationPermission();
         updateLocationUI();
-
-        // 위치 권한 획득 여부에 따라 현재 위치 가져오기
-        if(mLocationPermissionGranted){
-            getDeviceLocation();
-        }else{
-            if (checkLocationPermission()) {
-                mLocationPermissionGranted = true;
-                getDeviceLocation();
-            } else {
-                ActivityCompat.requestPermissions(mContext, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION);
-            }
-        }
-    }
-
-    private boolean checkLocationPermission() {
-        int permissionState = ActivityCompat.checkSelfPermission(mContext, Manifest.permission.ACCESS_FINE_LOCATION);
-        return permissionState == PackageManager.PERMISSION_GRANTED;
+        getDeviceLocation();
     }
 
     private void updateLocationUI() {
@@ -353,9 +339,8 @@ public class w_Nm1 extends Fragment implements OnMapReadyCallback {
     }
 
     private void setDefaultLocation() {
-        if (currentMarker != null) {
-            currentMarker.remove();
-        }
+        if (currentMarker != null) currentMarker.remove();
+
         MarkerOptions markerOptions = new MarkerOptions();
         markerOptions.position(mDefaultLocation);
         markerOptions.title("위치정보 가져올 수 없음");
@@ -451,36 +436,9 @@ public class w_Nm1 extends Fragment implements OnMapReadyCallback {
     private void getDeviceLocation() {
         try {
             if (mLocationPermissionGranted) {
-                mFusedLocationProviderClient.getLastLocation().addOnSuccessListener(mContext, new OnSuccessListener<Location>() {
-                    @Override
-                    public void onSuccess(Location location) {
-                        if (location != null) {
-                            LatLng latLng = new LatLng(location.getLatitude(), location.getLongitude());
-                            setCurrentLocation(location, "현재 위치", "");
-                            mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, DEFAULT_ZOOM));
-                        } else{
-                            requestLocationUpdates();
-                        }
-                    }
-                }).addOnFailureListener(mContext, new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Log.e(TAG, "마지막 GPS 위치를 가져오는 중 오류가 발생했습니다.");
-                        e.printStackTrace();
-                        // 마지막 위치를 가져오는 데 실패한 경우, 위치 업데이트를 요청합니다.
-                        requestLocationUpdates();
-                    }
-                });
+                mFusedLocationProviderClient.requestLocationUpdates(locationRequest, locationCallback, Looper.myLooper());
             }
-        } catch (SecurityException e) {
-            Log.e("Exception: %s", e.getMessage());
-        }
-    }
-
-    private void requestLocationUpdates() {
-        try {
-            mFusedLocationProviderClient.requestLocationUpdates(locationRequest, locationCallback, null);
-        } catch (SecurityException e) {
+        } catch (SecurityException e)  {
             Log.e("Exception: %s", e.getMessage());
         }
     }
@@ -490,7 +448,6 @@ public class w_Nm1 extends Fragment implements OnMapReadyCallback {
                 android.Manifest.permission.ACCESS_FINE_LOCATION)
                 == PackageManager.PERMISSION_GRANTED) {
             mLocationPermissionGranted = true;
-            getDeviceLocation();
         } else {
             ActivityCompat.requestPermissions(mContext,
                     new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION},
@@ -498,21 +455,35 @@ public class w_Nm1 extends Fragment implements OnMapReadyCallback {
         }
     }
 
+    private ActivityResultLauncher<String[]> locationPermissionLauncher = registerForActivityResult(
+            new ActivityResultContracts.RequestMultiplePermissions(),
+            permissions -> {
+                boolean allGranted = true;
+                for (Boolean granted : permissions.values()) {
+                    if (!granted) {
+                        allGranted = false;
+                        break;
+                    }
+                }
+                mLocationPermissionGranted = allGranted;
+                if (mLocationPermissionGranted) {
+                    getDeviceLocation();
+                }
+                updateLocationUI();
+            }
+    );
+
     @Override
     public void onRequestPermissionsResult(int requestCode,
                                            @NonNull String permissions[],
                                            @NonNull int[] grantResults) {
-        mLocationPermissionGranted = false;
-        switch (requestCode) {
-            case PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION: {
-                if (grantResults.length > 0
-                        && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    mLocationPermissionGranted = true;
-                    getDeviceLocation();
-                }
+        if (requestCode == PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION) {
+            Map<String, Boolean> permissionsMap = new HashMap<>();
+            for (int i = 0; i < permissions.length; i++) {
+                permissionsMap.put(permissions[i], grantResults[i] == PackageManager.PERMISSION_GRANTED);
             }
+            locationPermissionLauncher.launch(permissions);
         }
-        updateLocationUI();
     }
 
     public boolean checkLocationServicesStatus() {
@@ -548,9 +519,6 @@ public class w_Nm1 extends Fragment implements OnMapReadyCallback {
         if (mLocationPermissionGranted) {
             Log.d(TAG, "onResume : requestLoctionUpdates");
             ActivityCompat.requestPermissions(mContext, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION);
-//            if (mMap!=null){
-//                mMap.setMyLocationEnabled(true);
-//            }
         }
     }
     @Override
