@@ -486,6 +486,7 @@ public class w_Nm1 extends Fragment implements OnMapReadyCallback {
         }
     }
 
+
     public boolean checkLocationServicesStatus() {
         LocationManager locationManager = (LocationManager) getActivity().getSystemService(Context.LOCATION_SERVICE);
 
