@@ -18,13 +18,25 @@ import com.bumptech.glide.Glide;
 import java.util.List;
 
 public class w_RecycleAdapter extends RecyclerView.Adapter<w_RecycleAdapter.ViewHolder> {
-
+    //인터페이스 멤버변수 추가
+    private OnItemClickListener onItemClickListener;
     private final List<w_Itemcard> DataList;
     private View view;
+    //저장버튼
     boolean bt;
     Context context;
     Userdata user = Userdata.getInstance();
 
+    //인터페이스 정의
+    public interface OnItemClickListener {
+        void onItemClick(double latitude, double longitude);
+    }
+
+    public w_RecycleAdapter(List<w_Itemcard> dataList, boolean bt, OnItemClickListener listener) {
+        this.DataList = dataList;
+        this.bt = bt;
+        this.onItemClickListener = listener;
+    }
     public w_RecycleAdapter(List<w_Itemcard> dataList, boolean bt) {
         this.DataList = dataList;
         this.bt = bt;
@@ -64,14 +76,26 @@ public class w_RecycleAdapter extends RecyclerView.Adapter<w_RecycleAdapter.View
         }
 
         try{
-        holder.cartbt.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                user.addLike(item.getId());
-            }
-        });
+            holder.cartbt.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    user.addLike(item.getId());
+                }
+            });
         } catch (Exception e){}
 
+        //창현 위치보기
+        try{
+            holder.position.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    double lat = Double.parseDouble((String) user.getJson().get(item.getId()).get("y"));
+                    double lon = Double.parseDouble((String) user.getJson().get(item.getId()).get("x"));
+                    Log.v("Tag",lat + " , " + lon);
+                    onItemClickListener.onItemClick(lat, lon);
+                }
+            });
+        }catch (Exception e){}
     }
 
     //itme 갯수릂 파악하여 count하여 itme 생성형식을지정한다.
@@ -106,7 +130,10 @@ public class w_RecycleAdapter extends RecyclerView.Adapter<w_RecycleAdapter.View
         TextView title;
         TextView address;
         ImageView img;
+        //찜목록에 저장
         Button cartbt;
+        //구글맵에 장소 위치보기
+        Button position;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -114,7 +141,7 @@ public class w_RecycleAdapter extends RecyclerView.Adapter<w_RecycleAdapter.View
             address = itemView.findViewById(R.id.address_text);
             img = itemView.findViewById(R.id.img);
             cartbt = itemView.findViewById(R.id.cartbt);
-
+            position = itemView.findViewById(R.id.position);
         }
     }
 }

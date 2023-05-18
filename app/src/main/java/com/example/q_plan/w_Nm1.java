@@ -73,7 +73,7 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
-public class w_Nm1 extends Fragment implements OnMapReadyCallback {
+public class w_Nm1 extends Fragment implements OnMapReadyCallback ,w_RecycleAdapter.OnItemClickListener{
     private FragmentActivity mContext;
     private static final String TAG = w_Nm1.class.getSimpleName();
     //구글맵 변수 선언
@@ -101,6 +101,7 @@ public class w_Nm1 extends Fragment implements OnMapReadyCallback {
     private View view;
     private EditText search;
     private RecyclerView recyclerView;
+    private w_RecycleAdapter adapter;
     private Spinner place_spinner;
     private String place;
 
@@ -278,7 +279,7 @@ public class w_Nm1 extends Fragment implements OnMapReadyCallback {
         Log.i("Data", "card 형식 변환");
 
         //Recyclerview에서의 item 들을 출력할 형식(스타일)에 맞게 출력하기 위해 어댑터를 사용
-        w_RecycleAdapter adapter = new w_RecycleAdapter(itemcard, true);
+        w_RecycleAdapter adapter = new w_RecycleAdapter(itemcard, true, this);
         adapter.setContext(this.getContext());
         recyclerView.setAdapter(adapter);
     }
@@ -550,5 +551,15 @@ public class w_Nm1 extends Fragment implements OnMapReadyCallback {
         // Destroy 할 때는, 반대로 OnDestroyView에서 View를 제거하고, OnDestroy()를 호출한다.
         super.onDestroy();
         mapView.onDestroy();
+    }
+    @Override
+    public void onItemClick(double latitude, double longitude) {
+        //지금까지 찍힌 마커 모두 지우고 방금 클릭한것만 남기기
+        mMap.clear();
+        // 구글맵 객체(mMap)을 이용하여 마커 추가
+        Log.v("hi","여기 왔다감");
+        LatLng location = new LatLng(latitude, longitude);
+        Marker marker=mMap.addMarker(new MarkerOptions().position(location).title("?"));
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(marker.getPosition(), 15));
     }
 }
