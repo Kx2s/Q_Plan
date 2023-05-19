@@ -36,6 +36,7 @@ public class w_Nm3 extends Fragment {
             dataList.add(new w_Itemcard(id));
         }
 
+
         adapter = new w_RecycleAdapter(dataList, false);
         adapter.setContext(this.getContext());
         recyclerView.setAdapter(adapter);
