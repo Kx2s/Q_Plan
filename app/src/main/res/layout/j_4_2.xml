@@ -24,6 +24,7 @@
             android:layout_marginTop="20dp"
             android:layout_marginLeft="14dp"
             android:text="맞춤형 여행을 시작하겠습니다."
+            android:textStyle="bold"
             android:layout_gravity="left"
             android:textSize="20dp" />
 
@@ -65,8 +66,11 @@
                         android:layout_weight="1"
                         android:textOff="자연 관광지"
                         android:textOn="자연 관광지"
+                        android:textStyle="bold"
+                        android:textColor="@color/white"
                         android:drawable="@drawable/j_button_click"
-                        android:textSize="20dp"/>
+                        android:background="@drawable/j_4_2_backgroundimg_1"
+                        android:textSize="25dp"/>
 
                     <ToggleButton
                         android:layout_width="match_parent"
@@ -74,24 +78,33 @@
                         android:layout_marginLeft="5dp"
                         android:layout_marginRight="5dp"
                         android:layout_weight="1"
+                        android:textColor="@color/white"
+                        android:background="@drawable/j_4_2_backgroundimg_2"
                         android:textOff="역사 관광지"
                         android:textOn="역사 관광지"
-                        android:textSize="20dp"/>
+                        android:textSize="25dp"
+                        android:textStyle="bold"/>
                 </LinearLayout>
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_weight="1">
+                    android:layout_weight="1"
+                    android:layout_marginTop="5dp"
+                    >
 
                     <ToggleButton
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_marginLeft="5dp"
                         android:layout_marginRight="5dp"
+
                         android:layout_weight="1"
                         android:textOff="휴양 관광지"
                         android:textOn="휴양 관광지"
-                        android:textSize="20dp" />
+                        android:textSize="25dp"
+                        android:textStyle="bold"
+                        android:textColor="@color/white"
+                        android:background="@drawable/j_4_2_backgroundimg_3"/>
 
                     <ToggleButton
                         android:layout_width="match_parent"
@@ -101,12 +114,16 @@
                         android:layout_weight="1"
                         android:textOff="체험 관광지"
                         android:textOn="체험 관광지"
-                        android:textSize="20dp"/>
+                        android:textSize="25dp"
+                        android:textStyle="bold"
+                        android:textColor="@color/white"
+                        android:background="@drawable/j_4_2_backgroundimg_4"/>
                 </LinearLayout>
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_weight="1">
+                    android:layout_weight="1"
+                    android:layout_marginTop="5dp">
 
                     <ToggleButton
                         android:layout_width="match_parent"
@@ -116,7 +133,10 @@
                         android:layout_weight="1"
                         android:textOff="산업 관광지"
                         android:textOn="산업 관광지"
-                        android:textSize="20dp"/>
+                        android:textSize="25dp"
+                        android:textStyle="bold"
+                        android:textColor="@color/white"
+                        android:background="@drawable/j_4_2_backgroundimg_5"/>
 
                     <ToggleButton
                         android:layout_width="match_parent"
@@ -126,12 +146,16 @@
                         android:layout_weight="1"
                         android:textOff="건축/조형물"
                         android:textOn="건축/조형물"
-                        android:textSize="20dp"/>
+                        android:textSize="25dp"
+                        android:textStyle="bold"
+                        android:textColor="@color/white"
+                        android:background="@drawable/j_4_2_backgroundimg_6"/>
                 </LinearLayout>
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_weight="1">
+                    android:layout_weight="1"
+                    android:layout_marginTop="5dp">
 
                     <ToggleButton
                         android:layout_width="match_parent"
@@ -141,7 +165,10 @@
                         android:layout_weight="1"
                         android:textOff="문화 시설"
                         android:textOn="문화 시설"
-                        android:textSize="20dp" />
+                        android:textSize="25dp"
+                        android:textStyle="bold"
+                        android:textColor="@color/white"
+                        android:background="@drawable/j_4_2_backgroundimg_7"/>
 
                     <ToggleButton
                         android:layout_width="match_parent"
@@ -151,12 +178,16 @@
                         android:layout_weight="1"
                         android:textOff="축제"
                         android:textOn="축제"
-                        android:textSize="20dp"/>
+                        android:textSize="25dp"
+                        android:textStyle="bold"
+                        android:textColor="@color/white"
+                        android:background="@drawable/j_4_2_backgroundimg_8"/>
                 </LinearLayout>
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_weight="1">
+                    android:layout_weight="1"
+                    android:layout_marginTop="5dp">
 
                     <ToggleButton
                         android:layout_width="match_parent"
@@ -166,7 +197,10 @@
                         android:layout_weight="1"
                         android:textOff="공연/행사"
                         android:textOn="공연/행사"
-                        android:textSize="20dp" />
+                        android:textSize="25dp"
+                        android:textStyle="bold"
+                        android:textColor="@color/white"
+                        android:background="@drawable/j_4_2_backgroundimg_9"/>
 
                     <ToggleButton
                         android:layout_width="match_parent"
@@ -176,12 +210,16 @@
                         android:layout_weight="1"
                         android:textOff="레포츠"
                         android:textOn="레포츠"
-                        android:textSize="20dp"/>
+                        android:textSize="25dp"
+                        android:textStyle="bold"
+                        android:textColor="@color/white"
+                        android:background="@drawable/j_4_2_backgroundimg_10"/>
                 </LinearLayout>
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_weight="1">
+                    android:layout_weight="1"
+                    android:layout_marginTop="5dp">
 
                     <ToggleButton
                         android:layout_width="match_parent"
@@ -190,8 +228,11 @@
                         android:layout_marginRight="5dp"
                         android:layout_weight="1"
                         android:textOff="쇼핑"
+                        android:textStyle="bold"
                         android:textOn="쇼핑"
-                        android:textSize="20dp"/>
+                        android:textSize="25dp"
+                        android:textColor="@color/white"
+                        android:background="@drawable/j_4_2_backgroundimg_11"/>
 
                     <ToggleButton
                         android:layout_width="match_parent"
@@ -201,7 +242,10 @@
                         android:layout_weight="1"
                         android:textOff="음식"
                         android:textOn="음식"
-                        android:textSize="20dp"/>
+                        android:textSize="25dp"
+                        android:textStyle="bold"
+                        android:textColor="@color/white"
+                        android:background="@drawable/j_4_2_backgroundimg_12"/>
                 </LinearLayout>
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -215,21 +259,24 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginRight="5dp"
-                        android:text="이전"/>
+                        android:text="이전"
+                        android:background="@drawable/w_button_design"/>
 
                     <Button
                         android:id="@+id/next_open2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="5dp"
-                        android:text="다음"/>
+                        android:text="다음"
+                        android:background="@drawable/w_button_design"/>
 
                     <Button
                         android:id="@+id/jump"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="5dp"
-                        android:text="건너뛰기"/>
+                        android:text="건너뛰기"
+                        android:background="@drawable/w_button_design"/>
                 </LinearLayout>
             </LinearLayout>
         </LinearLayout>

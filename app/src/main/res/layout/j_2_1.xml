@@ -49,7 +49,6 @@
                     android:id="@+id/spinner"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/j_spinner_border"
                     android:paddingVertical="10dp"/>
 
             </LinearLayout>
@@ -63,7 +62,8 @@
                 android:id="@+id/make_time2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="생성하기"/>
+                android:text="생성하기"
+                android:background="@drawable/w_button_design"/>
         </LinearLayout>
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

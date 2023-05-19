@@ -302,13 +302,15 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="5dp"
-                            android:text="다음"/>
+                            android:text="다음"
+                            android:background="@drawable/w_button_design"/>
                         <Button
                             android:id="@+id/jump"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="5dp"
-                            android:text="건너뛰기"/>
+                            android:text="건너뛰기"
+                            android:background="@drawable/w_button_design"/>
                     </LinearLayout>
                 </LinearLayout>
             </ScrollView>
