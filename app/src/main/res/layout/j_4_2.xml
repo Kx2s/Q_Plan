@@ -212,8 +212,8 @@
                         android:textOn="레포츠"
                         android:textSize="25dp"
                         android:textStyle="bold"
-                        android:textColor="@color/white"
-                        android:background="@drawable/j_4_2_backgroundimg_10"/>
+                        android:background="@drawable/j_4_2_backgroundimg_10"
+                        android:textColor="@color/white" />
                 </LinearLayout>
                 <LinearLayout
                     android:layout_width="match_parent"
