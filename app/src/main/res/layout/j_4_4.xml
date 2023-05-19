@@ -27,7 +27,8 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:textSize="18dp"
-                    android:text="이전"/>
+                    android:text="이전"
+                    android:background="@drawable/w_button_design" />
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
@@ -52,7 +53,8 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:textSize="18dp"
-                    android:text="종료"/>
+                    android:text="종료"
+                    android:background="@drawable/w_button_design"/>
             </LinearLayout>
         </LinearLayout>
 
