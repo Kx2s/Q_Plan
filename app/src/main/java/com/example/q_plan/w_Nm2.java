@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.FrameLayout;
+import android.widget.LinearLayout;
 
 
 import androidx.activity.result.ActivityResult;
@@ -26,10 +27,31 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class w_Nm2 extends Fragment{
+    private View timetableView;
     FrameLayout contentFrame;
     LayoutInflater inflater_table;
     View view;
     int day=0;
+    boolean isTimetableCreated ;// 시간표 생성 여부를 저장할 변수
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        // 시간표가 생성되었다면 복원
+        if (isTimetableCreated) {
+            create_table(day);
+        }
+    }
+
+    @Override
+    public void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+
+        // 상태 저장
+        outState.putInt("day", day);
+        outState.putBoolean("isTimetableCreated", isTimetableCreated);
+    }
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -38,6 +60,9 @@ public class w_Nm2 extends Fragment{
         Button btn1=view.findViewById(R.id.Newbt);
         //시간표 생성 버튼 선언
         Button btn2=view.findViewById(R.id.make_time);
+        contentFrame = view.findViewById(R.id.time_container);
+        inflater_table = (LayoutInflater) view.getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        create_table(day);
 
         //장소 버튼 클릭시 event
         //Fragment에서는 Onclick 사용 불가능. 별도의 리스너 사용.
@@ -105,16 +130,28 @@ public class w_Nm2 extends Fragment{
         return view;
     }
     private void create_table(int day){
-        contentFrame=view.findViewById(R.id.time_container);
-        inflater_table= (LayoutInflater) view.getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        int layoutResId = 0;
         if(day==1){
-            inflater_table.inflate(R.layout.j_table_1,contentFrame,true);
+            layoutResId = R.layout.j_table_1;
         }
         else if(day==2){
-            inflater_table.inflate(R.layout.j_table_2,contentFrame,true);
+            layoutResId = R.layout.j_table_2;
         }
         else if(day==3){
-            inflater_table.inflate(R.layout.j_table_3,contentFrame,true);
+            layoutResId = R.layout.j_table_3;
+        }
+        if (layoutResId != 0) {
+            timetableView = inflater_table.inflate(layoutResId, null);
+            contentFrame.removeAllViews();
+            contentFrame.addView(timetableView);
+
+            // contentFrame의 레이아웃 파라미터 수정
+            LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT);
+            contentFrame.setLayoutParams(layoutParams);
+
+            isTimetableCreated = true;
+        } else {
+            Log.e("create_table", "Invalid layout resource ID");
         }
     }
 }
