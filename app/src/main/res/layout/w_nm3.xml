@@ -40,7 +40,7 @@
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/item_recyclerview3"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="620dp"
                     tools:listitem="@layout/w_itemcard">
 
                 </androidx.recyclerview.widget.RecyclerView>

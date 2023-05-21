@@ -205,5 +205,6 @@ public class MainActivity extends AppCompatActivity {
             // 데이터를 불러오는 도중 에러가 발생했을 때 호출되는 메서드
             Toast.makeText(getApplicationContext(), "인터넷 연결을 확인해주세요.", Toast.LENGTH_SHORT).show();
         }
+
     };
 }

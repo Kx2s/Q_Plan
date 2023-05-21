@@ -120,4 +120,5 @@ public class k_main extends AppCompatActivity {
                 break;
         }
     }// 종혁 /K_class 수정
+
 }

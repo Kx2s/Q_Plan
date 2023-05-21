@@ -16,27 +16,32 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
 
             <!--검색 장소 입력 레이아웃-->
-            <EditText
-                android:layout_width="325dp"
-                android:layout_height="match_parent"
-                android:layout_marginBottom="5dp"
-                android:hint=" 장소 입력"
-                android:text=""
-                android:textSize="20dp"
-                android:layout_marginLeft="10dp"/>
+            <Spinner
+                android:id="@+id/spinner3"
+                android:layout_width="250dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center_vertical"
+                android:background="@drawable/w_spinner3"
+                android:layout_marginStart="10dp"
+                 />
 
             <!--장소 추천 버튼, 클릭시 j_4_1레이아웃 open-->
             <Button
                 android:id="@+id/Newbt"
-                android:layout_width="49dp"
-                android:layout_height="wrap_content"
-                android:text="+"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:text="추천받기"
+                android:layout_marginTop="5dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="10dp"
                 android:textSize="20sp"
                 android:layout_marginBottom="5dp"
-                android:layout_marginLeft="15dp"
+                android:layout_marginEnd="10dp"
+
                 android:background="@drawable/w_button_design"
                 />
         </LinearLayout>
@@ -48,7 +53,7 @@
 
             <ScrollView
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="620dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"

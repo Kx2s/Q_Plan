@@ -15,9 +15,14 @@
         <!-- Status bar color. -->
         <item name="android:windowTranslucentStatus">true</item>
         <item name="android:statusBarColor" tools:target="l">?attr/colorPrimaryVariant</item>
-        <!-- <item name="android:windowLightStatusBar" tools:target="30">true</item> -->
+        <item name="android:windowLightStatusBar" tools:targetApi="m">true</item>
         <!-- this is the color of the Toolbar -->
         <!-- Customize your theme here. -->
+        <item name="android:windowContentTransitions">true</item>
+
+        //상태바표시로 레이아웃 패딩역활
+        <item name="android:fitsSystemWindows">true</item>
+
 
 
         <!--font  적용-->

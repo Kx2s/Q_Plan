@@ -8,8 +8,10 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.FrameLayout;
+import android.widget.Spinner;
 
 
 import androidx.activity.result.ActivityResult;
@@ -29,6 +31,7 @@ public class w_Nm2 extends Fragment{
     FrameLayout contentFrame;
     LayoutInflater inflater_table;
     View view;
+    private Spinner schedule_Spinner;
     int day=0;
     @Nullable
     @Override
@@ -38,6 +41,13 @@ public class w_Nm2 extends Fragment{
         Button btn1=view.findViewById(R.id.Newbt);
         //시간표 생성 버튼 선언
         Button btn2=view.findViewById(R.id.make_time);
+
+        //스피너 선언
+        schedule_Spinner = view.findViewById(R.id.spinner3);
+
+        schedule_Spinner.setAdapter(ArrayAdapter.createFromResource(getActivity(),R.array.schedule, androidx.appcompat.R.layout.support_simple_spinner_dropdown_item));
+
+
 
         //장소 버튼 클릭시 event
         //Fragment에서는 Onclick 사용 불가능. 별도의 리스너 사용.
