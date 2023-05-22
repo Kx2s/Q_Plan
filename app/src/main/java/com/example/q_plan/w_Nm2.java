@@ -46,6 +46,7 @@ public class w_Nm2 extends Fragment{
         }
     }
 
+
     @Override
     public void onSaveInstanceState(@NonNull Bundle outState) {
         super.onSaveInstanceState(outState);
